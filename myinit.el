@@ -11,6 +11,22 @@
       :config
       (which-key-mode))
 
+(use-package company
+  :ensure t
+  :config
+  (setq company-idle-delay 0)
+  (setq company-minimum-prefix-length 2)
+  (add-hook 'after-init-hook 'global-company-mode)
+
+  ;; remove unused backends
+  (setq company-backends (delete 'company-semantic company-backends))
+  (setq company-backends (delete 'company-eclim company-backends))
+  (setq company-backends (delete 'company-xcode company-backends))
+  (setq company-backends (delete 'company-clang company-backends))
+  (setq company-backends (delete 'company-bbdb company-backends))
+  (setq company-backends (delete 'company-oddmuse company-backends))
+  )
+
 ;; Org-mode stuff
 (use-package org-bullets
   :ensure t
@@ -69,16 +85,22 @@
   :ensure t
   :config (load-theme 'zenburn t))
 
-(use-package company
+(use-package ox-reveal
+:ensure ox-reveal)
+
+(setq org-reveal-root "http://cdn.jsdelivr.net/npm/reveal.js")
+(setq org-reveal-mathjax t)
+
+(use-package htmlize
+:ensure t)
+
+(use-package flycheck
   :ensure t
-  :config
-  (setq company-idle-delay 0)
-  (add-hook 'after-init-hook 'global-company-mode)
-  ;; remove unused backends
-  (setq company-backends (delete 'company-semantic company-backends))
-  (setq company-backends (delete 'company-eclim company-backends))
-  (setq company-backends (delete 'company-xcode company-backends))
-  (setq company-backends (delete 'company-clang company-backends))
-  (setq company-backends (delete 'company-bbdb company-backends))
-  (setq company-backends (delete 'company-oddmuse company-backends))
-  )
+  :init
+  (global-flycheck-mode t))
+
+(require 'evil)
+(evil-mode 1)
+
+;; Avoid generate file~
+(setq make-backup-files nil)
