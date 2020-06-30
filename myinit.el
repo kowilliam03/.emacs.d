@@ -102,5 +102,8 @@
 (require 'evil)
 (evil-mode 1)
 
+
+
 ;; Avoid generate file~
 (setq make-backup-files nil)
+(global-set-key (kbd "<f1>") 'linum-mode)

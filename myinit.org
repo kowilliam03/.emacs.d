@@ -139,8 +139,14 @@
 (require 'evil)
 (evil-mode 1)
 #+END_SRC
+* Python develop
+#+BEGIN_SRC emacs-lisp
+
+
+#+END_SRC
 * Other Settings
 #+BEGIN_SRC emacs-lisp
 ;; Avoid generate file~
 (setq make-backup-files nil)
+(global-set-key (kbd "<f1>") 'linum-mode)
 #+END_SRC
