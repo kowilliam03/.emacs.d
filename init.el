@@ -18,11 +18,13 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (evil flycheck htmlize ox-reveal zenburn-theme which-key use-package try sml-mode popup org-bullets help-find-org-mode ebdb counsel company ace-window))))
+    (evil flycheck htmlize ox-reveal zenburn-theme which-key use-package try sml-mode popup org-bullets help-find-org-mode ebdb counsel company ace-window)))
+ '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(default ((t (:family "Fira Code" :foundry "outline" :slant normal :weight normal :height 143 :width normal))))
  '(aw-leading-char-face ((t (:inherit ace-jump-face-foreground :height 3.0)))))
 

@@ -20,6 +20,8 @@
 
 ;; ----- ido-dir-file-cache -----
 (
+ ("c:/Users/KWN/Project/ReinforcementLearning/" (24319 64216 0 0) "論文/" "v1_進度表.xlsx" "pytorch.ipynb" "PyTorch-1.x-Reinforcement-Learning-Cookbook/" "note.org" "Deep-Reinforcement-Learning-Hands-On-Second-Edition/" "ch1.org" "cartpole_video/" "2020 Reinforcement Learning An Introduction 2nd Edition.pdf" "2020 Hands-On Reinforcement Learning for Game.pdf" "2019 PyTorch 1.x Reinforcement Learning Cookbook.pdf" ".ipynb_checkpoints/" "(First)2020 Deep Reinforcement Learning Hands-On, 2nd Edition.pdf" "#ch1.org#" "../" "./")
+
  ("/mnt/c/Users/KWN/Project/ReinforcementLearning/" (24310 57374 412584 200000) "pytorch.ipynb" "PyTorch-1.x-Reinforcement-Learning-Cookbook/" "note.org" "2020 Hands-On Reinforcement Learning for Game.pdf" "2019 PyTorch 1.x Reinforcement Learning Cookbook.pdf" ".ipynb_checkpoints/" "(First)2020 Deep Reinforcement Learning Hands-On, 2nd Edition.pdf" "../" "./")
 
  ("/mnt/c/Users/KWN/Project/" (24305 30633 537713 100000) "論文/" "實習期末網頁/" "YZUIEC/" "Voicebot_and_Chatbot -101/" "TranslateQT/" "Todger_DataAnalysis/" "ThinkStats2/" "TensorFlow2.md" "TensorFlow-2.x-Tutorials-master/" "summer_camp_python/" "springer_free_books/" "SpeechRecongnition/" "ReinforcementLearning/" "Python教學/" "Python_Data_Science_handbook.zip" "Python_Data_Science_handbook/" "PythonDataScienceHandbook/" "ProgrammingCorner/" "MIS2/" "Machine Learning Tutorials/" "lfw/" "JupyterHub 設定.docx" "internship_final_report/" "imageops/" "IM236/" "IBM面試.md" "Golang/" "Free_Python_Resource/" "FoodDelivery_v2/" "FoodDelivery/" "Flask_Tutorial/" "flask_demo/" "Django_demo/" "Coursera/" "Cloud_Native_Python/" "Bill_Note/" "angular/" "AI趨勢.docx" "20181025/" "10. Todger_Tutorials/" ".tmp.drivedownload/" ".ipynb_checkpoints/" "../" "./")
