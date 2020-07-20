@@ -81,9 +81,7 @@
   :ensure t
   :bind ("M-s" . avy-goto-char))
 
-(use-package zenburn-theme
-  :ensure t
-  :config (load-theme 'zenburn t))
+(load-theme 'plan9)
 
 (use-package ox-reveal
 :ensure ox-reveal)
@@ -107,6 +105,7 @@
 ;; Avoid generate file~
 (setq make-backup-files nil)
 (global-set-key (kbd "<f1>") 'linum-mode)
+(scroll-bar-mode -1)
 
 ;; Put autosave files and backup files in ~/.emacs.d
 (custom-set-variables
@@ -115,3 +114,14 @@
 
 ;; create the autosave dir if necessary, since emacs won't
 (make-directory "~/.emacs.d/autosaves/" t)
+
+(defun open-my-init-file()
+  (interactive)
+  (find-file "~/.emacs.d/myinit.org"))
+
+(global-set-key (kbd "<f2>") 'open-my-init-file)
+
+(setq cursor-type 'bar)
+
+;; Highlight current line
+(global-hl-line-mode t)
