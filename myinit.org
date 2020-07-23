@@ -141,7 +141,11 @@
 #+END_SRC
 * Python develop
 #+BEGIN_SRC emacs-lisp
-
+  (use-package elpy
+    :ensure t
+    :defer t
+    :init
+    (advice-add 'python-mode :before 'elpy-enable))
 
 #+END_SRC
 * Other Settings
@@ -169,4 +173,7 @@
 
   ;; Highlight current line
   (global-hl-line-mode t)
+
+  ;; disable audio notifications
+  (setq ring-bell-function 'ignore)
 #+END_SRC

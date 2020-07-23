@@ -103,7 +103,11 @@
 (require 'evil)
 (evil-mode 1)
 
-
+(use-package elpy
+  :ensure t
+  :defer t
+  :init
+  (advice-add 'python-mode :before 'elpy-enable))
 
 ;; Avoid generate file~
 (setq make-backup-files nil)
