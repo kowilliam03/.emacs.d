@@ -81,7 +81,10 @@
   :ensure t
   :bind ("M-s" . avy-goto-char))
 
-(load-theme 'plan9)
+(use-package acme-theme
+  :ensure t
+  :config
+  (load-theme 'acme t))
 
 (use-package ox-reveal
 :ensure ox-reveal)

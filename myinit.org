@@ -107,7 +107,10 @@
 #+END_SRC
 * Themes
 #+BEGIN_SRC emacs-lisp
-  (load-theme 'plan9)
+  (use-package acme-theme
+    :ensure t
+    :config
+    (load-theme 'acme t))
 #+END_SRC
 
 * Reveal.js
