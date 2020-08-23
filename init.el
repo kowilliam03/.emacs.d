@@ -16,14 +16,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(auto-save-file-name-transforms (quote ((".*" "~/.emacs.d/autosaves/\\1" t))))
- '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
+ '(auto-save-file-name-transforms '((".*" "~/.emacs.d/autosaves/\\1" t)))
+ '(backup-directory-alist '((".*" . "~/.emacs.d/backups/")))
  '(custom-safe-themes
-   (quote
-    ("18cd5a0173772cdaee5522b79c444acbc85f9a06055ec54bb91491173bc90aaa" default)))
+   '("18cd5a0173772cdaee5522b79c444acbc85f9a06055ec54bb91491173bc90aaa" default))
  '(package-selected-packages
-   (quote
-    (inverse-acme-theme nofrils-acme-theme plan9-theme evil flycheck htmlize ox-reveal which-key use-package try sml-mode popup org-bullets help-find-org-mode ebdb counsel company ace-window)))
+   '(inverse-acme-theme nofrils-acme-theme plan9-theme evil flycheck htmlize ox-reveal which-key use-package sml-mode popup org-bullets help-find-org-mode ebdb counsel company ace-window))
  '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
