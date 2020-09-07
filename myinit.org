@@ -140,7 +140,6 @@
     :defer t
     :init
     (advice-add 'python-mode :before 'elpy-enable))
-
 #+END_SRC
 * Other Settings
 #+BEGIN_SRC emacs-lisp

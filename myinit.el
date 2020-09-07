@@ -3,9 +3,6 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 (global-set-key (kbd "<f5>") 'revert-buffer)
 
-(use-package try
-  :ensure t)
-
 (use-package which-key
       :ensure t
       :config
@@ -132,3 +129,6 @@
 
 ;; Highlight current line
 (global-hl-line-mode t)
+
+;; disable audio notifications
+(setq ring-bell-function 'ignore)
