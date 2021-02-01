@@ -61,6 +61,11 @@
   :ensure t
   :bind ("C-;" . avy-goto-char))
 
+(use-package undo-tree
+  :ensure t
+  :init
+  (global-undo-tree-mode))
+
 ;; Progamming Language
 (use-package sml-mode
   :ensure t)
@@ -102,7 +107,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(try counsel swiper ace-window which-key use-package sml-mode)))
+   '(undo-tree try counsel swiper ace-window which-key use-package sml-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
