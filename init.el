@@ -1,33 +1,73 @@
-
 (require 'package)
 (setq package-enable-at-startup nil)
 (add-to-list 'package-archives
 	     '("melpa" . "https://melpa.org/packages/"))
+
 (package-initialize)
 
-;; Bootstrap `use-package'
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
 
-(org-babel-load-file (expand-file-name "~/.emacs.d/myinit.org"))
+(use-package which-key
+  :ensure t
+  :config (which-key-mode))
+
+;; Org-mode stuff
+(use-package org-bullets
+  :ensure t
+  :config
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+
+(use-package ace-window
+  :ensure t
+  :init
+  (progn
+    (global-set-key [remap other-window] 'ace-window)
+    (custom-set-faces
+     '(aw-leading-char-face
+       ((t (:inherit ace-jump-face-foreground :height 2.0)))))
+    ))
+
+;; Theme
+(use-package modus-themes
+  :ensure t
+  :init
+  (setq modus-themes-slanted-constructs t
+	modus-themes-bold-constructs nil)
+  (modus-themes-load-themes)
+   :config
+   (modus-themes-load-operandi)
+   :bind ("<f5>" . modus-themes-toggle))
+
+;; My setting 
+(setq inhibit-startup-message t)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+(global-set-key (kbd "<f1>") 'linum-mode)
+(setq make-backup-files nil)
+(setq ring-bell-function 'ignore)
+
+(setq indo-enable-flex-matching t)
+(setq ido-everywhere t)
+(ido-mode 1)
+
+
+(defalias 'list-buffers 'ibuffer)
+
+(add-to-list 'default-frame-alist
+	     '(font . "Fira Code Retina-14"))
+
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(auto-save-file-name-transforms '((".*" "~/.emacs.d/autosaves/\\1" t)))
- '(backup-directory-alist '((".*" . "~/.emacs.d/backups/")))
- '(custom-safe-themes
-   '("18cd5a0173772cdaee5522b79c444acbc85f9a06055ec54bb91491173bc90aaa" default))
- '(package-selected-packages
-   '(inverse-acme-theme nofrils-acme-theme plan9-theme evil flycheck htmlize ox-reveal which-key use-package sml-mode popup org-bullets help-find-org-mode ebdb counsel company ace-window))
- '(tool-bar-mode nil))
+ '(package-selected-packages '(ace-window which-key use-package sml-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Fira Code Medium" :foundry "outline" :slant normal :weight normal :height 143 :width normal))))
- '(aw-leading-char-face ((t (:inherit ace-jump-face-foreground :height 3.0)))))
-
+ '(aw-leading-char-face ((t (:inherit ace-jump-face-foreground :height 2.0)))))
