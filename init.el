@@ -29,6 +29,42 @@
        ((t (:inherit ace-jump-face-foreground :height 2.0)))))
     ))
 
+(use-package counsel
+  :ensure t
+  )
+
+(use-package ivy
+  :ensure t
+  :diminish (ivy-mode)
+  :bind (("C-x b" . ivy-switch-buffer))
+  :config
+  (ivy-mode 1)
+  (setq ivy-use-virtual-buffers t)
+  (setq ivy-display-style 'fancy))
+
+(use-package swiper
+  :ensure try
+  :bind (("C-s" . swiper)
+	 ("C-r" . swiper)
+	 ("C-c C-r" . ivy-resume)
+	 ("M-x" . counsel-M-x)
+	 ("C-x C-f" . counsel-find-file))
+  :config
+  (progn
+    (ivy-mode 1)
+    (setq ivy-use-virtual-buffers t)
+    (setq ivy-display-style 'fancy)
+    (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
+    ))
+
+(use-package avy
+  :ensure t
+  :bind ("C-;" . avy-goto-char))
+
+;; Progamming Language
+(use-package sml-mode
+  :ensure t)
+
 ;; Theme
 (use-package modus-themes
   :ensure t
@@ -40,8 +76,6 @@
    (modus-themes-load-operandi)
    :bind ("<f5>" . modus-themes-toggle))
 
-(use-package sml-mode
-  :ensure t)
 
 ;; My setting 
 (setq inhibit-startup-message t)
@@ -67,7 +101,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(ace-window which-key use-package sml-mode)))
+ '(package-selected-packages
+   '(try counsel swiper ace-window which-key use-package sml-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
