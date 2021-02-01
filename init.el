@@ -40,6 +40,9 @@
    (modus-themes-load-operandi)
    :bind ("<f5>" . modus-themes-toggle))
 
+(use-package sml-mode
+  :ensure t)
+
 ;; My setting 
 (setq inhibit-startup-message t)
 (tool-bar-mode -1)
