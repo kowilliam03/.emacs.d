@@ -9,6 +9,13 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
+(use-package auto-package-update
+  :ensure t
+  :config
+  (setq auto-package-update-delete-old-versions t)
+  (setq auto-package-update-hide-results t)
+  (auto-package-update-maybe))
+
 (use-package which-key
   :ensure t
   :config (which-key-mode))
@@ -121,7 +128,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(company undo-tree try counsel swiper ace-window which-key use-package sml-mode)))
+   '(auto-package-update company undo-tree try counsel swiper ace-window which-key use-package sml-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
