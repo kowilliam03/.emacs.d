@@ -107,6 +107,7 @@
 (setq inhibit-startup-message t)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
+(show-paren-mode t)
 (global-set-key (kbd "<f1>") 'linum-mode)
 (setq make-backup-files nil)
 (setq ring-bell-function 'ignore)
@@ -115,6 +116,13 @@
 (setq ido-everywhere t)
 (ido-mode 1)
 
+;; hideshow
+(add-hook 'prog-mode-hook #'hs-minor-mode)
+
+(electric-pair-mode t)
+(setq electric-pair-pairs '(
+			    (?\' . ?\')
+			    ))
 
 (defalias 'list-buffers 'ibuffer)
 
