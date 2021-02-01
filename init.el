@@ -66,6 +66,20 @@
   :init
   (global-undo-tree-mode))
 
+;; Company mode
+(use-package company
+  :ensure t
+  :defer t
+  :init (global-company-mode)
+  :config
+  (setq company-idle-delay 0)
+  (setq company-minimum-prefix-length 3)
+  (setq company-backends
+	'((company-files
+	   company-keywords
+	   company-capf
+	   ))))
+
 ;; Progamming Language
 (use-package sml-mode
   :ensure t)
@@ -107,7 +121,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(undo-tree try counsel swiper ace-window which-key use-package sml-mode)))
+   '(company undo-tree try counsel swiper ace-window which-key use-package sml-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
