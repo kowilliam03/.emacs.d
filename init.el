@@ -89,7 +89,9 @@
 
 ;; Progamming Language
 (use-package sml-mode
-  :ensure t)
+  :ensure t
+  :defer t
+  :mode "\\.sml\\'")
 
 ;; Theme
 (use-package modus-themes
@@ -136,7 +138,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(auto-package-update company undo-tree try counsel swiper ace-window which-key use-package sml-mode)))
+   '(sml-mode auto-package-update company undo-tree try counsel swiper ace-window which-key use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
