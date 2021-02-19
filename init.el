@@ -1,56 +1,70 @@
+(setq inhibit-startup-message t)
+(setq default-directory "~/")
+
+(scroll-bar-mode -1)    ; Disable visible scrollbar
+(tool-bar-mode -1)      ; Disable the toolbar
+(tooltip-mode -1)       ; Disable tooltips
+(set-fringe-mode 10)    ; Give some breathing room
+
+(menu-bar-mode -1)      ; Disable the menu bar
+
+;; Set up the visible bell
+(setq visible-bell t)
+
+(set-face-attribute 'default nil :font "Fira Code Retina" :height 125)
+
+(load-theme 'wombat)
+
+
+;; Make ESC quit prompts
+(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+
+;; Initialize package sources
 (require 'package)
-(setq package-enable-at-startup nil)
-(add-to-list 'package-archives
-	     '("melpa" . "https://melpa.org/packages/"))
+
+(setq package-archives '(("melpa" . "https://melpa.org/packages/")
+			 ("org" . "https://orgmode.org/elpa/")
+			 ("elpa" . "https://elpa.gnu.org/packages/")))
 
 (package-initialize)
+(unless package-archive-contents
+  (package-refresh-contents))
 
+;; Initialize use-package on non-Linux platforms
 (unless (package-installed-p 'use-package)
-  (package-refresh-contents)
   (package-install 'use-package))
 
-(use-package auto-package-update
-  :ensure t
-  :config
-  (setq auto-package-update-delete-old-versions t)
-  (setq auto-package-update-hide-results t)
-  (auto-package-update-maybe))
+(require 'use-package)
+(setq use-package-always-ensure t)
 
-(use-package which-key
-  :ensure t
-  :config (which-key-mode))
-
-;; Org-mode stuff
-(use-package org-bullets
-  :ensure t
-  :config
-  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
-
-(use-package ace-window
-  :ensure t
-  :init
-  (progn
-    (global-set-key [remap other-window] 'ace-window)
-    (custom-set-faces
-     '(aw-leading-char-face
-       ((t (:inherit ace-jump-face-foreground :height 2.0)))))
-    ))
+(use-package command-log-mode)
 
 (use-package counsel
-  :ensure t
-  )
+  :ensure t)
 
 (use-package ivy
   :ensure t
-  :diminish (ivy-mode)
-  :bind (("C-x b" . ivy-switch-buffer))
+  :diminish
+  :bind (("C-s" . swiper)
+	 :map ivy-minibuffer-map
+	 ("C-l" . ivy-alt-done)
+	 ("C-j" . ivy-next-line)
+	 ("C-k" . ivy-previous-line)
+	 :map ivy-switch-buffer-map
+	 ("C-k" . ivy-previous-line)	
+	 ("C-l" . ivy-done)
+	 ("C-d" . ivy-swich-buffer-kill)
+	 :map ivy-reverse-i-search-map
+	 ("C-k" . ivy-previous-line)
+	 ("C-d" . ivy-reverse-i-search-kill))
   :config
   (ivy-mode 1)
   (setq ivy-use-virtual-buffers t)
-  (setq ivy-display-style 'fancy))
+  (setq ivy-display-style 'fancy)
+  )
 
 (use-package swiper
-  :ensure try
+  :ensure t
   :bind (("C-s" . swiper)
 	 ("C-r" . swiper)
 	 ("C-c C-r" . ivy-resume)
@@ -61,87 +75,26 @@
     (ivy-mode 1)
     (setq ivy-use-virtual-buffers t)
     (setq ivy-display-style 'fancy)
-    (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
-    ))
+    (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history))
+  )
 
-(use-package avy
+(use-package doom-modeline
   :ensure t
-  :bind ("C-;" . avy-goto-char))
-
-(use-package undo-tree
-  :ensure t
-  :init
-  (global-undo-tree-mode))
-
-;; Company mode
-(use-package company
-  :ensure t
-  :defer t
-  :init (global-company-mode)
-  :config
-  (setq company-idle-delay 0)
-  (setq company-minimum-prefix-length 3)
-  (setq company-backends
-	'((company-files
-	   company-keywords
-	   company-capf
-	   ))))
-
-;; Progamming Language
-(use-package sml-mode
-  :ensure t
-  :defer t
-  :mode "\\.sml\\'")
-
-;; Theme
-(use-package modus-themes
-  :ensure t
-  :init
-  (setq modus-themes-slanted-constructs t
-	modus-themes-bold-constructs nil)
-  (modus-themes-load-themes)
-   :config
-   (modus-themes-load-operandi)
-   :bind ("<f5>" . modus-themes-toggle))
-
-
-;; My setting 
-(setq inhibit-startup-message t)
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
-(show-paren-mode t)
-(global-set-key (kbd "<f1>") 'linum-mode)
-(setq make-backup-files nil)
-(setq ring-bell-function 'ignore)
-
-(setq indo-enable-flex-matching t)
-(setq ido-everywhere t)
-(ido-mode 1)
-
-;; hideshow
-(add-hook 'prog-mode-hook #'hs-minor-mode)
-
-(electric-pair-mode t)
-(setq electric-pair-pairs '(
-			    (?\' . ?\')
-			    ))
-
-(defalias 'list-buffers 'ibuffer)
-
-(add-to-list 'default-frame-alist
-	     '(font . "Fira Code Retina-14"))
-
+  :init (doom-modeline-mode 1)
+  :custom
+  ((doom-modeline-height 20))
+  )
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(sml-mode auto-package-update company undo-tree try counsel swiper ace-window which-key use-package)))
+ '(global-command-log-mode t)
+ '(package-selected-packages '(counsel ivy command-log-mode use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(aw-leading-char-face ((t (:inherit ace-jump-face-foreground :height 2.0)))))
+ )
