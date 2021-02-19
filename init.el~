@@ -11,10 +11,19 @@
 ;; Set up the visible bell
 (setq visible-bell t)
 
-(set-face-attribute 'default nil :font "Fira Code Retina" :height 125)
+(set-face-attribute 'default nil :font "Fira Code Retina" :height 135)
 
-(load-theme 'wombat)
-
+;; Theme 
+;;(load-theme 'wombat)
+(use-package doom-themes
+  :ensure t
+  :config
+  (setq doom-themes-enable-bold t)
+  (setq doom-themes-enable-italic t)
+  (load-theme 'doom-nord t)
+  (doom-themes-visual-bell-config)
+  (doom-themes-org-config)
+  )
 
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
@@ -82,7 +91,7 @@
   :ensure t
   :init (doom-modeline-mode 1)
   :custom
-  ((doom-modeline-height 15))
+  ((doom-modeline-height 20))
   )
 
 (custom-set-variables

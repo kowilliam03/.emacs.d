@@ -11,10 +11,20 @@
 ;; Set up the visible bell
 (setq visible-bell t)
 
-(set-face-attribute 'default nil :font "Fira Code Retina" :height 125)
+(set-face-attribute 'default nil :font "Fira Code Retina" :height 135)
 
-(load-theme 'wombat)
-
+;; Theme 
+;;(load-theme 'wombat)
+(use-package doom-themes
+  :ensure t
+  :defer t
+  :config
+  (setq doom-themes-enable-bold t)
+  (setq doom-themes-enable-italic t)
+  (doom-themes-visual-bell-config)
+  (doom-themes-org-config)
+  )
+(load-theme 'doom-nord t)
 
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
@@ -47,6 +57,7 @@
   :diminish
   :bind (("C-s" . swiper)
 	 :map ivy-minibuffer-map
+	;; ("TAB" . ivy-alt-done)
 	 ("C-l" . ivy-alt-done)
 	 ("C-j" . ivy-next-line)
 	 ("C-k" . ivy-previous-line)
@@ -91,7 +102,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(global-command-log-mode t)
- '(package-selected-packages '(counsel ivy command-log-mode use-package)))
+ '(package-selected-packages '(doom-themes counsel ivy command-log-mode use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
