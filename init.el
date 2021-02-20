@@ -12,7 +12,7 @@
 ;; Set up the visible bell
 (setq visible-bell t)
 
-(set-face-attribute 'default nil :font "Fira Code Retina" :height 135)
+(set-face-attribute 'default nil :font "Fira Code" :height 135)
 
 (column-number-mode)
 (global-display-line-numbers-mode t)
