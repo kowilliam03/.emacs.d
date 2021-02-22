@@ -15,23 +15,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   '("4a8d4375d90a7051115db94ed40e9abb2c0766e80e228ecad60e06b3b397acab" default))
- '(global-command-log-mode t)
- '(package-selected-packages
-   '(evil-magit magit counsel-projectile projectile evil-collection evil general helpful ivy-rich which-key rainbow-delimiters doom-themes counsel ivy command-log-mode use-package)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+
 (setq default-directory "~/")
+
 
 (scroll-bar-mode -1)    ; Disable visible scrollbar
 (tool-bar-mode -1)      ; Disable the toolbar
@@ -217,6 +203,7 @@
 (rune/leader-keys
  "ts" '(hydra-text-scale/body :which-key "scale-text"))
 
+
 (use-package projectile
   :diminish projectile-mode
   :config (projectile-mode)
@@ -235,4 +222,3 @@
   :custom
   (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
   )
-
