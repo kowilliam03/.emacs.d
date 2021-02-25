@@ -1,0 +1,5 @@
+cd ../Projects/
+cd gallery-dl/
+cls
+clear
+pip install -r requirements.txt

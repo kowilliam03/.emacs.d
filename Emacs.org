@@ -48,6 +48,7 @@
 (dolist (mode '(org-mode-hook
 		term-mode-hook
 		shell-mode-hook
+               treemacs-mode-hook
 		eshell-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 #+end_src
@@ -315,7 +316,7 @@
   (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'efs/org-babel-tangle-config)))
 
 #+end_src
-* Configure Babel Language
+** Configure Babel Language
 #+begin_src emacs-lisp
   (org-babel-do-load-languages
    'org-babel-load-languages
@@ -336,6 +337,81 @@
 #+end_src
 
 * Development
+** Progamming Languages
+*** Language Servers
+**** lsp-mode
+#+begin_src emacs-lisp
+
+  (defun efs/lsp-mode-setup()
+    (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols))
+    (lsp-headerline-breadcrumb-mode))
+
+  (use-package lsp-mode
+    :commands (lsp lsp-deferred)
+    :init
+    (setq lsp-keymap-prefix "C-c l")  ;; Or 'C-l', 's-l'
+    :config
+    (lsp-enable-which-key-integration t))
+
+#+end_src
+**** lsp-ui
+#+begin_src emacs-lisp
+
+  (use-package lsp-ui
+    :hook (lsp-mode . lsp-ui-mode)
+    :custom
+    (lsp-ui-doc-position 'bottom))
+
+#+end_src
+**** lsp-treemacs
+#+begin_src emacs-lisp
+
+  (use-package lsp-treemacs
+    :after lsp)
+
+#+end_src
+**** lsp-ivy
+
+#+begin_src emacs-lisp
+
+  (use-package lsp-ivy)
+
+#+end_src
+** Terminals
+*** term-mode
+#+begin_src emacs-lisp
+
+  (use-package term
+    :config
+    (setq explicit-shell-file-name "powershell")
+    ;; (setq explicit-zsh-args '())
+    (setq term-prompt-regexp "^[^#$%>\n]*[#$%>] *"))
+
+#+end_src
+** Company Mode
+#+begin_src emacs-lisp
+
+  (use-package company
+    :after lsp-mode
+    :hook (prog-mode . company-mode)
+    :bind (:map company-active-map
+                ("<tab>" . company-complete-selection))
+          (:map lsp-mode-map
+          ("<tab>" . company-indent-or-complete-common))
+    :custom
+    (company-minimum-prefix-length 1)
+    (company-idle-delay 0.0))
+
+  (use-package company-box
+    :hook (company-mode . company-box-mode))
+#+end_src
+** Comenting
+#+begin_src emacs-lisp
+
+  (use-package evil-nerd-commenter
+    :bind ("M-/" . evilnc-comment-or-uncomment-lines))
+
+#+end_src
 ** Projectile
 #+begin_src emacs-lisp
 
