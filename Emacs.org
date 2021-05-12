@@ -40,7 +40,6 @@
 (setq inhibit-startup-message t)
 (setq default-directory "~/")
 
-
 (scroll-bar-mode -1)    ; Disable visible scrollbar
 (tool-bar-mode -1)      ; Disable the toolbar
 
@@ -67,11 +66,19 @@
 
 ** Font Configuration
 #+begin_src emacs-lisp
-(set-face-attribute 'default nil :font "Fira Code Retina" :height 135)
-
-;; Set the fixed pitch face
-(set-face-attribute 'fixed-pitch nil :font "Fira Code Retina" :height 135)
-
+  (pcase system-type
+    ((or 'gnu/linux 'windows-nt)
+     (set-face-attribute 'default nil
+                         ;; :font "Iosevka"
+                         :font "JetBrains Mono"
+                         :weight 'regular
+                         )
+     (set-face-attribute 'fixed-pitch nil
+                         :font "Iosevka"
+                         :weight 'light
+                         )
+     )
+    )
 #+end_src
 * Keybinding Configuration
 #+begin_src emacs-lisp
@@ -280,9 +287,6 @@
   (setq org-log-done 'time)
   (setq org-log-into-drawer t)
 
-  (setq org-agenda-files
-	'("~/Agenda/Tasks.org"))
-
   (efs/org-font-setup))
 
 #+end_src
@@ -310,10 +314,10 @@
 #+end_src
 ** Configure Babel Languages
 #+begin_src emacs-lisp
-  (org-babel-do-load-languages
-   'org-babel-load-languages
-   '((emacs-lisp . t)
-     (python . t)))
+    (org-babel-do-load-languages
+     'org-babel-load-languages
+     '((emacs-lisp . t))
+     )
 #+end_src
 ** Auto-tangle Configuration Files
 #+begin_src emacs-lisp
@@ -330,12 +334,12 @@
 #+end_src
 ** Configure Babel Language
 #+begin_src emacs-lisp
-  (org-babel-do-load-languages
-   'org-babel-load-languages
-   '((emacs-lisp . t)
-     (python . t)))
+    (org-babel-do-load-languages
+     'org-babel-load-languages
+     '((emacs-lisp . t))
+     )
 
-  (push '("conf-unix" . conf-unix) org-src-lang-modes)
+    (push '("conf-unix" . conf-unix) org-src-lang-modes)
 #+end_src
 * Structure Templates
 #+begin_src emacs-lisp
@@ -388,14 +392,6 @@
 
   (use-package lsp-ivy)
 
-#+end_src
-*** Python
-#+begin_src emacs-lisp
-
-  (use-package python-mode
-    :ensure nil
-    :custom
-    (python-shell0interpreter "python3"))
 #+end_src
 ** Terminals
 *** term-mode
@@ -522,11 +518,4 @@
 ;; prevent backup files
 (setq make-backup-files nil)
 
-;; automatically open Agenda when starting emacs
-(find-file "~/Agenda/Tasks.org")
-
-;; use C-x for cut
-;; C-c for copy
-;; C-v for paste
-(cua-mode 1)
 #+end_src

@@ -27,7 +27,6 @@
 (setq inhibit-startup-message t)
 (setq default-directory "~/")
 
-
 (scroll-bar-mode -1)    ; Disable visible scrollbar
 (tool-bar-mode -1)      ; Disable the toolbar
 
@@ -51,10 +50,19 @@
 		eshell-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
-(set-face-attribute 'default nil :font "Fira Code Retina" :height 135)
-
-;; Set the fixed pitch face
-(set-face-attribute 'fixed-pitch nil :font "Fira Code Retina" :height 135)
+(pcase system-type
+  ((or 'gnu/linux 'windows-nt)
+   (set-face-attribute 'default nil
+                       ;; :font "Iosevka"
+                       :font "JetBrains Mono"
+                       :weight 'regular
+                       )
+   (set-face-attribute 'fixed-pitch nil
+                       :font "Iosevka"
+                       :weight 'light
+                       )
+   )
+  )
 
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
@@ -224,9 +232,6 @@
   (setq org-log-done 'time)
   (setq org-log-into-drawer t)
 
-  (setq org-agenda-files
-	'("~/Agenda/Tasks.org"))
-
   (efs/org-font-setup))
 
 (use-package org-bullets
@@ -245,8 +250,8 @@
 
 (org-babel-do-load-languages
  'org-babel-load-languages
- '((emacs-lisp . t)
-   (python . t)))
+ '((emacs-lisp . t))
+ )
 
 ;; Automatically tangle Emacs.org config file when save it
 (defun efs/org-babel-tangle-config ()
@@ -260,8 +265,8 @@
 
 (org-babel-do-load-languages
  'org-babel-load-languages
- '((emacs-lisp . t)
-   (python . t)))
+ '((emacs-lisp . t))
+ )
 
 (push '("conf-unix" . conf-unix) org-src-lang-modes)
 
@@ -292,11 +297,6 @@
   :after lsp)
 
 (use-package lsp-ivy)
-
-(use-package python-mode
-  :ensure nil
-  :custom
-  (python-shell0interpreter "python3"))
 
 (use-package term
   :config
@@ -382,11 +382,3 @@
 
 ;; prevent backup files
 (setq make-backup-files nil)
-
-;; automatically open Agenda when starting emacs
-(find-file "~/Agenda/Tasks.org")
-
-;; use C-x for cut
-;; C-c for copy
-;; C-v for paste
-(cua-mode 1)

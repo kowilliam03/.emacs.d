@@ -1,1 +1,1 @@
-("~/.emacs.d/" "~/Projects/gallery-dl/")
+("~/.emacs.d/")
