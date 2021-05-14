@@ -103,8 +103,6 @@
   :config
   (evil-collection-init))
 
-(use-package command-log-mode)
-
 ;; Theme 
 (use-package doom-themes
   :defer t
@@ -115,7 +113,7 @@
   (doom-themes-org-config)
   )
 
-(load-theme 'doom-dracula  t)
+(load-theme 'doom-solarized-light  t)
 
 (use-package all-the-icons)
 
@@ -382,3 +380,17 @@
 
 ;; prevent backup files
 (setq make-backup-files nil)
+(setq package-native-compile t)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(which-key visual-fill-column use-package undo-tree rainbow-delimiters org-bullets magit lsp-ui lsp-treemacs lsp-ivy ivy-rich helpful gnu-elpa-keyring-update general evil-nerd-commenter evil-collection eterm-256color eshell-git-prompt doom-themes doom-modeline counsel-projectile company-box auto-package-update)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

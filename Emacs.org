@@ -124,10 +124,6 @@
 
 #+end_src
 * UI Configuration
-** Commnad Log Mode
-#+begin_src emacs-lisp
-(use-package command-log-mode)
-#+end_src
 ** Theme
 #+begin_src emacs-lisp
 
@@ -141,7 +137,7 @@
   (doom-themes-org-config)
   )
 
-(load-theme 'doom-dracula  t)
+(load-theme 'doom-solarized-light  t)
 
 #+end_src
 ** Modeline
@@ -515,7 +511,8 @@
 #+end_src
 * Other Setting
 #+begin_src emacs-lisp
-;; prevent backup files
-(setq make-backup-files nil)
+    ;; prevent backup files
+    (setq make-backup-files nil)
+    (setq package-native-compile t)
 
 #+end_src
