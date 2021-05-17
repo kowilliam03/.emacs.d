@@ -5,3 +5,4 @@ recentf
 server/
 transient/
 eln-cache/
+.cache/

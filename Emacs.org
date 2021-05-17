@@ -1,6 +1,21 @@
 #+title Emacs Configuration
 #+PROPERTY: header-args:emacs-lisp :tangle ./init.el :mkdirp yes
 
+* Startup Performance
+#+begin_src emacs-lisp
+  ;; The default is 800 kilobytes. Measured in bytes.
+  (setq gc-cons-threshold (* 50 1000 1000))
+
+  ;; Profile emacs startup
+  (add-hook 'emacs-startup-hook
+            (lambda ()
+              (message "***  Emacs loaded in %s with %d gargabe collections."
+                       (format "%.2f seconds"
+                               (float-time
+                                (time-subtract after-init-time before-init-time)))
+                       gcs-done)))
+#+end_src
+
 * Package System Setup
 #+begin_src emacs-lisp
 
@@ -35,7 +50,8 @@
     (auto-package-update-maybe))
 
 #+end_src
-* Basic UI Configuration
+* UI Configuration
+** Basic UI setting
 #+begin_src emacs-lisp
 (setq inhibit-startup-message t)
 (setq default-directory "~/")
@@ -72,84 +88,115 @@
                          ;; :font "Iosevka"
                          :font "JetBrains Mono"
                          :weight 'regular
+		           :height 150
                          )
      (set-face-attribute 'fixed-pitch nil
                          :font "Iosevka"
                          :weight 'light
+		           :height 150
                          )
      )
     )
 #+end_src
+** UI Toggle 
+#+begin_src emacs-lisp
+  (kwn/leader-keys
+    "tt" '(counsel-load-theme :which-key "choose them")
+    )
+#+end_src
 * Keybinding Configuration
+** General setting
 #+begin_src emacs-lisp
 
-;; Make ESC quit prompts
-(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+  (use-package general
+    :config
+    (general-create-definer kwn/leader-keys
+      :keymaps '(normal insert visual emacs)
+      :prefix "SPC"
+      :global-prefix "C-SPC")
 
-(use-package general
-  :config
-  (general-create-definer rune/leader-keys
-    :keymaps '(normal insert visual emacs)
-    :prefix "SPC"
-    :global-prefix "C-SPC")
+    (kwn/leader-keys
+    ;; Buffer
+      "b" '(:ignore t :which-key "Buffer")
 
-  (rune/leader-keys
-   "t" '(:ignore t :which-key "toggles")
-   "tt" '(counsel-load-theme :which-key "choose theme"))
-  )
+    ;; Toggle
+     "t" '(:ignore t :which-key "Toggles")
 
+    ;; Open
+     "o" '(:ignore t :which-key "Open")
 
-(use-package evil
-  :init
-  (setq evil-want-integration t)
-  (setq evil-want-keybinding nil)
-  (setq evil-want-C-u-scroll t)
-  (setq evil-want-C-i-jump nil)
-  :config
-  (evil-mode 1)
-  (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
-  (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
+    ;; Search
+     "s" '(:ignore t :which-key "Search")
+     "ss" '(swiper :which-key "Search in file")
 
-  ;; Use visual line motions even outside of visual-line-mode buffers
-  (evil-global-set-key 'motion "j" 'evil-next-visual-line)
-  (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
+     ;; Execute
+     "x" '(:ignore t :which-key "Execute")
+     "xs" '(save-buffer :which-key "Save Buffer")
+     )
+    )
+#+end_src
+** Evil setting
+#+begin_src emacs-lisp
 
-  (evil-set-initial-state 'messages-buffer-mode 'normal)
-  (evil-set-initial-state 'dashboard-mode 'normal))
+  ;; Make ESC quit prompts
+  (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
-(use-package evil-collection
-  :after evil
-  :config
-  (evil-collection-init))
+  (use-package evil
+    :init
+    (setq evil-want-integration t)
+    (setq evil-want-keybinding nil)
+    (setq evil-want-C-u-scroll t)
+    (setq evil-want-C-i-jump nil)
+    :config
+    (evil-mode 1)
+    (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
+    (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
+
+    ;; Use visual line motions even outside of visual-line-mode buffers
+    (evil-global-set-key 'motion "j" 'evil-next-visual-line)
+    (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
+
+    (evil-set-initial-state 'messages-buffer-mode 'normal)
+    (evil-set-initial-state 'dashboard-mode 'normal))
+
+  (use-package evil-collection
+    :after evil
+    :config
+    (evil-collection-init))
 
 #+end_src
 * UI Configuration
 ** Theme
 #+begin_src emacs-lisp
 
-;; Theme 
-(use-package doom-themes
-  :defer t
-  :config
-  (setq doom-themes-enable-bold t)
-  (setq doom-themes-enable-italic t)
-  (doom-themes-visual-bell-config)
-  (doom-themes-org-config)
-  )
+  ;; Theme 
+  (use-package doom-themes
+    :defer t
+    :config
+    (setq doom-themes-enable-bold t)
+    (setq doom-themes-enable-italic t)
+    (doom-themes-visual-bell-config)
+    (doom-themes-org-config)
+    )
 
-(load-theme 'doom-solarized-light  t)
+  (load-theme 'doom-solarized-light  t)
+
+  (kwn/leader-keys
+    "tt" '(counsel-load-theme :which-key "choose theme")
+    )
 
 #+end_src
 ** Modeline
 #+begin_src emacs-lisp
 
-(use-package all-the-icons)
+  (use-package all-the-icons)
 
-(use-package doom-modeline
-  :init (doom-modeline-mode 1)
-  :custom
-  ((doom-modeline-height 20))
- )
+  (use-package doom-modeline
+    :init (doom-modeline-mode 1)
+    :custom
+    (doom-modeline-height 20)
+    (doom-modeline-lsp t)
+   )
 
 #+end_src
 ** Which Key
@@ -159,50 +206,56 @@
   :init (which-key-mode)
   :diminish which-key-mode
   :config
-  (setq which-key-idle-delay 0.4)
+  (setq which-key-idle-delay 0.2)
   )
 
 #+end_src
 ** Ivy and Counsel
 #+begin_src emacs-lisp
 
-(use-package ivy
-  :diminish
-  :bind (("C-s" . swiper)
-	 :map ivy-minibuffer-map
-	 ("TAB" . ivy-alt-done)
-	 ("C-l" . ivy-alt-done)
-	 ("C-j" . ivy-next-line)
-	 ("C-k" . ivy-previous-line)
-	 :map ivy-switch-buffer-map
-	 ("C-k" . ivy-previous-line)	
-	 ("C-l" . ivy-done)
-	 ("C-d" . ivy-swich-buffer-kill)
-	 :map ivy-reverse-i-search-map
-	 ("C-k" . ivy-previous-line)
-	 ("C-d" . ivy-reverse-i-search-kill))
-  :config
-  (ivy-mode 1)
-  (setq ivy-use-virtual-buffers t)
-  (setq ivy-display-style 'fancy)
-  )
+    (use-package ivy
+      :diminish
+      :bind (("C-s" . swiper)
+             :map ivy-minibuffer-map
+             ("TAB" . ivy-alt-done)
+             ("C-l" . ivy-alt-done)
+             ("C-j" . ivy-next-line)
+             ("C-k" . ivy-previous-line)
+             :map ivy-switch-buffer-map
+             ("C-k" . ivy-previous-line)	
+             ("C-l" . ivy-done)
+             ("C-d" . ivy-swich-buffer-kill)
+             :map ivy-reverse-i-search-map
+             ("C-k" . ivy-previous-line)
+             ("C-d" . ivy-reverse-i-search-kill))
+      :config
+      (ivy-mode 1)
+      (setq ivy-use-virtual-buffers t)
+      (setq ivy-display-style 'fancy)
+      )
 
-(use-package ivy-rich
-  :init
-  (ivy-rich-mode 1)
-  )
+    (use-package ivy-rich
+      :init
+      (ivy-rich-mode 1)
+      )
 
-(use-package counsel
-  :bind (("M-x" . counsel-M-x)
-	 ("C-x b" . counsel-ibuffer)
-	 ("C-x C-f" . counsel-find-file)
-	 :map minibuffer-local-map
-	 ("C-r" . 'counsel-minibuffer-history))
-  :config
-  (setq ivy-initial-inputs-alist nil) ;; Don't start searches with ^
-  (counsel-mode 1)
-  )
+    (use-package counsel
+      :bind (("M-x" . counsel-M-x)
+             ("C-x b" . counsel-ibuffer)
+             ("C-x C-f" . counsel-find-file)
+             :map minibuffer-local-map
+             ("C-r" . 'counsel-minibuffer-history))
+      :config
+      (setq ivy-initial-inputs-alist nil) ;; Don't start searches with ^
+      (counsel-mode 1)
+      )
 
+    (kwn/leader-keys
+      "xf" '(counsel-find-file :which-key "Open file")
+      "xx" '(counsel-M-x :which-key "Execute Command")
+
+      "bi" '(ibuffer :which-key "IBuffer")
+      )
 #+end_src
 ** Helpful Help Commands
 #+begin_src emacs-lisp
@@ -222,16 +275,17 @@
 ** Text Scaling
 #+begin_src emacs-lisp
 
-(use-package hydra)
+  (use-package hydra)
 
-(defhydra hydra-text-scale (:timeout 4)
-  "scale text"
-  ("j" text-scale-increase "in")
-  ("k" text-scale-decrease "out")
-  ("f" nil "finished" :exit t))
+  (defhydra hydra-text-scale (:timeout 4)
+    "scale text"
+    ("j" text-scale-increase "in")
+    ("k" text-scale-decrease "out")
+    ("f" nil "finished" :exit t))
 
-  (rune/leader-keys
-  "ts" '(hydra-text-scale/body :which-key "scale-text"))
+    (kwn/leader-keys
+      "ts" '(hydra-text-scale/body :which-key "scale-text")
+    )
 
 #+end_src
 * Org Mode
@@ -370,7 +424,12 @@
 #+begin_src emacs-lisp
 
   (use-package lsp-ui
+    :ensure t
+    :defer t
     :hook (lsp-mode . lsp-ui-mode)
+    :config
+    (setq lsp-ui-sideline-enable nil
+          lsp-ui-doc-delay 2)
     :custom
     (lsp-ui-doc-position 'bottom))
 
@@ -388,6 +447,43 @@
 
   (use-package lsp-ivy)
 
+#+end_src
+*** Python
+#+begin_src emacs-lisp
+  (use-package python
+    :ensure t
+    :hook (python-mode . lsp-deferred)
+    :config
+    (setq python-indent-guess-indent-offset-verbose nil)
+    )
+
+  (use-package anaconda-mode
+    :ensure t
+    :config
+    (add-hook 'python-mode-hook 'anaconda-mode)
+    )
+
+  (use-package company-anaconda
+    :ensure t
+    :init (require 'rx)
+    :after (company)
+    :config
+    (add-to-list 'company-backends 'company-anaconda)
+    )
+
+  (use-package lsp-pyright
+    :ensure t
+    :defer t
+    :config
+    (setq lsp-pyright-disable-language-service nil
+          lsp-pyright-disable-organize-imports nil
+          lsp-pyright-auto-import-completions t
+          lsp-pyright-use-library-code-for-types t
+          )
+    :hook (python-mode . (lambda ()
+                           (require 'lsp-pyright)
+                           (lsp-deferred)))
+    )
 #+end_src
 ** Terminals
 *** term-mode
@@ -443,16 +539,21 @@
 #+end_src
 ** Company Mode
 #+begin_src emacs-lisp
-
   (use-package company
+    :ensure t
+    :defer t
+    :diminish
     :after lsp-mode
+    :config
+    (setq company-dabbrev-other-buffers t
+          company-dabbrev-code-other-buffers t)
     :hook (prog-mode . company-mode)
     :bind (:map company-active-map
                 ("<tab>" . company-complete-selection))
           (:map lsp-mode-map
           ("<tab>" . company-indent-or-complete-common))
     :custom
-    (company-minimum-prefix-length 1)
+    (company-minimum-prefix-length 2)
     (company-idle-delay 0.0))
 
   (use-package company-box
@@ -484,6 +585,40 @@
 
 #+end_src
 
+** Treemacs
+#+begin_src emacs-lisp
+  (use-package treemacs
+    :ensure t
+    :defer t
+    :config
+    (setq treemacs-no-png-images n
+          treemacs-width 24)
+    )
+
+  (use-package treemacs-all-the-icons
+    :after treemacs
+    :ensure t
+    :config
+    (treemacs-load-theme "all-the-icons")
+  )
+
+  (use-package treemacs-evil
+    :after (treemacs evil)
+    :ensure t
+    )
+
+  (use-package treemacs-icons-dired
+    :after (treemacs dired)
+    :ensure t
+    :config
+    (treemacs-icons-dired-mode)
+    )
+
+  ;; Open Sidebar
+  (kwn/leader-keys
+    "op" '(treemacs :which-key "sidebar")
+    )
+#+end_src
 ** Magit
 #+begin_src emacs-lisp
 
@@ -511,8 +646,12 @@
 #+end_src
 * Other Setting
 #+begin_src emacs-lisp
-    ;; prevent backup files
-    (setq make-backup-files nil)
-    (setq package-native-compile t)
+  ;; prevent backup files
+  (setq make-backup-files nil)
+  (setq package-native-compile t)
 
+  ;; Silence compiler warnings as they can be pretty disruptive
+  (setq comp-async-report-warnings-errors nil)
+
+  (set-default-coding-systems 'utf-8)
 #+end_src
