@@ -4,7 +4,7 @@
 * Startup Performance
 #+begin_src emacs-lisp
   ;; The default is 800 kilobytes. Measured in bytes.
-  (setq gc-cons-threshold (* 50 1000 1000))
+  (setq gc-cons-threshold (* 500 1000 1000))
 
   ;; Profile emacs startup
   (add-hook 'emacs-startup-hook
@@ -17,25 +17,26 @@
 #+end_src
 
 * Package System Setup
+** Use-package
 #+begin_src emacs-lisp
 
-;; Initialize package sources
-(require 'package)
+  ;; Initialize package sources
+  (require 'package)
 
-(setq package-archives '(("melpa" . "https://melpa.org/packages/")
-			 ("org" . "https://orgmode.org/elpa/")
-			 ("elpa" . "https://elpa.gnu.org/packages/")))
+  (setq package-archives '(("melpa" . "https://melpa.org/packages/")
+                           ("org" . "https://orgmode.org/elpa/")
+                           ("elpa" . "https://elpa.gnu.org/packages/")))
 
-(package-initialize)
-(unless package-archive-contents
-  (package-refresh-contents))
+  (package-initialize)
+  (unless package-archive-contents
+    (package-refresh-contents))
 
-;; Initialize use-package on non-Linux platforms
-(unless (package-installed-p 'use-package)
-  (package-install 'use-package))
+  ;; Initialize use-package on non-Linux platforms
+  (unless (package-installed-p 'use-package)
+    (package-install 'use-package))
 
-(require 'use-package)
-(setq use-package-always-ensure t)
+  (require 'use-package)
+  (setq use-package-always-ensure t)
 
 #+end_src
 ** Automatic Package Updates
@@ -98,12 +99,6 @@
      )
     )
 #+end_src
-** UI Toggle 
-#+begin_src emacs-lisp
-  (kwn/leader-keys
-    "tt" '(counsel-load-theme :which-key "choose them")
-    )
-#+end_src
 * Keybinding Configuration
 ** General setting
 #+begin_src emacs-lisp
@@ -115,24 +110,30 @@
       :prefix "SPC"
       :global-prefix "C-SPC")
 
+
     (kwn/leader-keys
-    ;; Buffer
+      ;; Buffer
       "b" '(:ignore t :which-key "Buffer")
 
-    ;; Toggle
-     "t" '(:ignore t :which-key "Toggles")
+      ;; Files
+      "f" '(:ignore t :which-key "Files")
+      ;; Magit
+      "g" '(:ignore t :which-key "Magit")
 
-    ;; Open
-     "o" '(:ignore t :which-key "Open")
+      ;; Toggle
+      "t" '(:ignore t :which-key "Toggles")
 
-    ;; Search
-     "s" '(:ignore t :which-key "Search")
-     "ss" '(swiper :which-key "Search in file")
+      ;; Open
+      "o" '(:ignore t :which-key "Open")
 
-     ;; Execute
-     "x" '(:ignore t :which-key "Execute")
-     "xs" '(save-buffer :which-key "Save Buffer")
-     )
+      ;; Search
+      "s" '(:ignore t :which-key "Search")
+      "ss" '(swiper :which-key "Search in file")
+
+      ;; Execute
+      "x" '(:ignore t :which-key "Execute")
+      "xs" '(save-buffer :which-key "Save Buffer")
+      )
     )
 #+end_src
 ** Evil setting
@@ -164,6 +165,25 @@
     :config
     (evil-collection-init))
 
+#+end_src
+** Other setting
+#+begin_src emacs-lisp
+  (defun open-init-file ()
+    "Open the init file."
+    (interactive)
+    (find-file user-init-file)
+    )
+
+  (defun open-init-org-file ()
+    "Open the init file."
+    (interactive)
+    (find-file "~/.emacs.d/Emacs.org")
+    )
+
+  (kwn/leader-keys
+    "fp" '(open-init-org-file :which-key "Config file")
+    "fP" '(open-init-file :which-key "Config file")
+    )
 #+end_src
 * UI Configuration
 ** Theme
@@ -414,8 +434,6 @@
 
   (use-package lsp-mode
     :commands (lsp lsp-deferred)
-    :init
-    (setq lsp-keymap-prefix "C-c l")  ;; Or 'C-l', 's-l'
     :config
     (lsp-enable-which-key-integration t))
 
@@ -424,7 +442,6 @@
 #+begin_src emacs-lisp
 
   (use-package lsp-ui
-    :ensure t
     :defer t
     :hook (lsp-mode . lsp-ui-mode)
     :config
@@ -451,20 +468,17 @@
 *** Python
 #+begin_src emacs-lisp
   (use-package python
-    :ensure t
     :hook (python-mode . lsp-deferred)
     :config
     (setq python-indent-guess-indent-offset-verbose nil)
     )
 
   (use-package anaconda-mode
-    :ensure t
     :config
     (add-hook 'python-mode-hook 'anaconda-mode)
     )
 
   (use-package company-anaconda
-    :ensure t
     :init (require 'rx)
     :after (company)
     :config
@@ -472,7 +486,6 @@
     )
 
   (use-package lsp-pyright
-    :ensure t
     :defer t
     :config
     (setq lsp-pyright-disable-language-service nil
@@ -540,7 +553,6 @@
 ** Company Mode
 #+begin_src emacs-lisp
   (use-package company
-    :ensure t
     :defer t
     :diminish
     :after lsp-mode
@@ -588,7 +600,6 @@
 ** Treemacs
 #+begin_src emacs-lisp
   (use-package treemacs
-    :ensure t
     :defer t
     :config
     (setq treemacs-no-png-images n
@@ -597,19 +608,16 @@
 
   (use-package treemacs-all-the-icons
     :after treemacs
-    :ensure t
     :config
     (treemacs-load-theme "all-the-icons")
   )
 
   (use-package treemacs-evil
     :after (treemacs evil)
-    :ensure t
     )
 
   (use-package treemacs-icons-dired
     :after (treemacs dired)
-    :ensure t
     :config
     (treemacs-icons-dired-mode)
     )
@@ -622,11 +630,15 @@
 ** Magit
 #+begin_src emacs-lisp
 
-(use-package magit
-  :custom
-  (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
-  )
-  
+  (use-package magit
+    :custom
+    (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
+    )
+
+  (kwn/leader-keys
+    "gg" '(magit-status :which-key "Magit status")
+     )
+
 #+end_src
 ** Rainbow Delimiters
 #+begin_src emacs-lisp

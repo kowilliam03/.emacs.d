@@ -1,5 +1,5 @@
 ;; The default is 800 kilobytes. Measured in bytes.
-(setq gc-cons-threshold (* 50 1000 1000))
+(setq gc-cons-threshold (* 500 1000 1000))
 
 ;; Profile emacs startup
 (add-hook 'emacs-startup-hook
@@ -14,8 +14,8 @@
 (require 'package)
 
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
-			 ("org" . "https://orgmode.org/elpa/")
-			 ("elpa" . "https://elpa.gnu.org/packages/")))
+                         ("org" . "https://orgmode.org/elpa/")
+                         ("elpa" . "https://elpa.gnu.org/packages/")))
 
 (package-initialize)
 (unless package-archive-contents
@@ -78,10 +78,6 @@
    )
   )
 
-(kwn/leader-keys
-  "tt" '(counsel-load-theme :which-key "choose them")
-  )
-
 (use-package general
   :config
   (general-create-definer kwn/leader-keys
@@ -89,24 +85,30 @@
     :prefix "SPC"
     :global-prefix "C-SPC")
 
+
   (kwn/leader-keys
-  ;; Buffer
+    ;; Buffer
     "b" '(:ignore t :which-key "Buffer")
 
-  ;; Toggle
-   "t" '(:ignore t :which-key "Toggles")
+    ;; Files
+    "f" '(:ignore t :which-key "Files")
+    ;; Magit
+    "g" '(:ignore t :which-key "Magit")
 
-  ;; Open
-   "o" '(:ignore t :which-key "Open")
+    ;; Toggle
+    "t" '(:ignore t :which-key "Toggles")
 
-  ;; Search
-   "s" '(:ignore t :which-key "Search")
-   "ss" '(swiper :which-key "Search in file")
+    ;; Open
+    "o" '(:ignore t :which-key "Open")
 
-   ;; Execute
-   "x" '(:ignore t :which-key "Execute")
-   "xs" '(save-buffer :which-key "Save Buffer")
-   )
+    ;; Search
+    "s" '(:ignore t :which-key "Search")
+    "ss" '(swiper :which-key "Search in file")
+
+    ;; Execute
+    "x" '(:ignore t :which-key "Execute")
+    "xs" '(save-buffer :which-key "Save Buffer")
+    )
   )
 
 ;; Make ESC quit prompts
@@ -134,6 +136,23 @@
   :after evil
   :config
   (evil-collection-init))
+
+(defun open-init-file ()
+  "Open the init file."
+  (interactive)
+  (find-file user-init-file)
+  )
+
+(defun open-init-org-file ()
+  "Open the init file."
+  (interactive)
+  (find-file "~/.emacs.d/Emacs.org")
+  )
+
+(kwn/leader-keys
+  "fp" '(open-init-org-file :which-key "Config file")
+  "fP" '(open-init-file :which-key "Config file")
+  )
 
 ;; Theme 
 (use-package doom-themes
@@ -326,13 +345,10 @@
 
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
-  :init
-  (setq lsp-keymap-prefix "C-c l")  ;; Or 'C-l', 's-l'
   :config
   (lsp-enable-which-key-integration t))
 
 (use-package lsp-ui
-  :ensure t
   :defer t
   :hook (lsp-mode . lsp-ui-mode)
   :config
@@ -347,20 +363,17 @@
 (use-package lsp-ivy)
 
 (use-package python
-  :ensure t
   :hook (python-mode . lsp-deferred)
   :config
   (setq python-indent-guess-indent-offset-verbose nil)
   )
 
 (use-package anaconda-mode
-  :ensure t
   :config
   (add-hook 'python-mode-hook 'anaconda-mode)
   )
 
 (use-package company-anaconda
-  :ensure t
   :init (require 'rx)
   :after (company)
   :config
@@ -368,7 +381,6 @@
   )
 
 (use-package lsp-pyright
-  :ensure t
   :defer t
   :config
   (setq lsp-pyright-disable-language-service nil
@@ -420,7 +432,6 @@
   (eshell-git-prompt-use-theme 'powerline))
 
 (use-package company
-  :ensure t
   :defer t
   :diminish
   :after lsp-mode
@@ -457,7 +468,6 @@
   :config (counsel-projectile-mode))
 
 (use-package treemacs
-  :ensure t
   :defer t
   :config
   (setq treemacs-no-png-images n
@@ -466,19 +476,16 @@
 
 (use-package treemacs-all-the-icons
   :after treemacs
-  :ensure t
   :config
   (treemacs-load-theme "all-the-icons")
 )
 
 (use-package treemacs-evil
   :after (treemacs evil)
-  :ensure t
   )
 
 (use-package treemacs-icons-dired
   :after (treemacs dired)
-  :ensure t
   :config
   (treemacs-icons-dired-mode)
   )
@@ -492,6 +499,10 @@
   :custom
   (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
   )
+
+(kwn/leader-keys
+  "gg" '(magit-status :which-key "Magit status")
+   )
 
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode)
