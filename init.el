@@ -92,8 +92,15 @@
 
     ;; Files
     "f" '(:ignore t :which-key "Files")
+
     ;; Magit
     "g" '(:ignore t :which-key "Magit")
+
+    ;; Help
+    "h" '(:ignore t :which-key "Help")
+    "hf" '(helpful-function :which-key "key")
+    "hk" '(helpful-key :which-key "key")
+    "hv" '(helpful-variable :which-key "key")
 
     ;; Toggle
     "t" '(:ignore t :which-key "Toggles")
@@ -150,7 +157,7 @@
   )
 
 (kwn/leader-keys
-  "fp" '(open-init-org-file :which-key "Config file")
+  "fp" '(open-init-org-file :which-key "Config Org file")
   "fP" '(open-init-file :which-key "Config file")
   )
 
@@ -448,7 +455,16 @@
   (company-idle-delay 0.0))
 
 (use-package company-box
-  :hook (company-mode . company-box-mode))
+  :diminish
+  :functions (all-the-icons-faicon
+              all-the-icons-material
+              all-the-icons-octicon
+              all-the-icons-alltheicon)
+  :hook (company-mode . company-box-mode)
+  ;;:init (setq company-box-enable-icon (display-graphic-p))
+  :init (setq company-box-enable-icon nil)
+
+  )
 
 (use-package evil-nerd-commenter
   :bind ("M-/" . evilnc-comment-or-uncomment-lines))
