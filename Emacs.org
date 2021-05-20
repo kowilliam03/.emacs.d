@@ -582,9 +582,8 @@
                 all-the-icons-octicon
                 all-the-icons-alltheicon)
     :hook (company-mode . company-box-mode)
-    ;;:init (setq company-box-enable-icon (display-graphic-p))
-    :init (setq company-box-enable-icon nil)
-
+    :init (setq company-box-enable-icon (display-graphic-p))
+    ;;:init (setq company-box-enable-icon
     )
 #+end_src
 ** Comenting
