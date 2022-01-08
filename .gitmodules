@@ -31,3 +31,6 @@
 [submodule "packages/all-the-icons-dired"]
 	path = packages/all-the-icons-dired
 	url = https://github.com/jtbm37/all-the-icons-dired.git
+[submodule "packages/all-the-icons-ibuffer"]
+	path = packages/all-the-icons-ibuffer
+	url = https://github.com/seagle0128/all-the-icons-ibuffer.git
