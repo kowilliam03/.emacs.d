@@ -29,6 +29,7 @@
 
 ;; UI
 (require 'init-font)
+(require 'init-icon)
 (require 'init-theme)
 
 (require 'init-company)

@@ -11,6 +11,7 @@
 	      (evil-mode 1)))
 
 (with-eval-after-load 'evil
+  ;; Evil config
   (evil-mode 1)
   (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
   (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
@@ -22,6 +23,7 @@
   (evil-set-initial-state 'messages-buffer-mode 'normal)
   (evil-set-initial-state 'dashboard-mode 'normal)
   (evil-set-initial-state 'dired-mode 'emacs)
+
   )
 
 (global-set-key (kbd "<escape>") 'keyborad-escape-quit)
