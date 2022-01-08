@@ -9,9 +9,6 @@
   (message (shell-command-to-string cmd))
   )
 
-;; Load all package's path
-
-;;(load-package-path "~/.emacs.d/packages/")
 
 
 (provide 'init-package)

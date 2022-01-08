@@ -25,6 +25,7 @@
 (require 'init-utils)
 (require 'init-misc)
 (require 'init-package)
+(require 'init-minibuffer)
 
 ;; UI
 (require 'init-font)
