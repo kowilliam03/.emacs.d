@@ -12,15 +12,9 @@
 	lsp-restart 'auto-restart))
 
 
-(dolist (hook (list
-               'python-mode-hook
-               ))
-  (add-hook hook #'(lambda ()
-                     (require 'lsp-mode)
-                     (require 'lsp-modeline)
-                     (require 'lsp-headerline)
-
-                     (lsp)
-                     )))
+(add-hook 'python-mode-hook #'(lambda ()
+				(require 'lsp-mode)
+				(lsp)
+				))
 
 (provide 'init-lsp)

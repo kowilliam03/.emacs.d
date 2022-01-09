@@ -18,7 +18,7 @@
     (normal-top-level-add-subdirs-to-load-path)))
 
 ;; Load config
-(load-path "~/.emacs.d/lisp/")
+(load-path "~/.emacs.d/config")
 ;; Load packages
 (load-path "~/.emacs.d/packages/")
 
