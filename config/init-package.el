@@ -3,7 +3,7 @@
 
 (defun kwn/compile-package ()
   (interactive)
-  (native-compile-async "../packages" 'recursively))
+  (native-compile-async "~/.emacs.d/packages" 'recursively))
 
 
 (provide 'init-package)
