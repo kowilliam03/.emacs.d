@@ -33,9 +33,13 @@
 (require 'init-icon)
 (require 'init-theme)
 
+;; Develop tools
 (require 'init-company)
 (require 'init-evil)
+(require 'init-lsp)
 
+;; Programming Language
+(require 'init-python)
 
 
 (provide 'init)

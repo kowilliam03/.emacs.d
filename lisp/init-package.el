@@ -1,14 +1,9 @@
 ;; -*- lexical-binding: t; -*-
 ;; Install package from Github
 
-(defun kwn/clone-package (package)
-  "Clone Repository from Github with submodule"
+(defun kwn/compile-package ()
   (interactive)
-  (setq package-name (car (cdr (split-string package "/"))))
-  (setq cmd (format "git submodule add https://github.com/%s ../packages/%s" package package-name))
-  (message (shell-command-to-string cmd))
-  )
-
+  (native-compile-async "../packages" 'recursively))
 
 
 (provide 'init-package)
