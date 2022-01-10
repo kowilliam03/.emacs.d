@@ -61,3 +61,6 @@
 [submodule "packages/lsp-pyright"]
 	path = packages/lsp-pyright
 	url = https://github.com/emacs-lsp/lsp-pyright.git
+[submodule "packages/company-box"]
+	path = packages/company-box
+	url = https://github.com/sebastiencs/company-box.git
