@@ -33,6 +33,8 @@
 (require 'init-icon)
 (require 'init-theme)
 
+(require 'init-dired)
+
 ;; Develop tools
 (require 'init-company)
 (require 'init-evil)
