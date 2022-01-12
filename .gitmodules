@@ -64,3 +64,6 @@
 [submodule "packages/company-box"]
 	path = packages/company-box
 	url = https://github.com/sebastiencs/company-box.git
+[submodule "packages/doom-themes"]
+	path = packages/doom-themes
+	url = https://github.com/doomemacs/themes.git

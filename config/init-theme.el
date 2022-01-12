@@ -2,16 +2,12 @@
 
 (setq custom-safe-themes t)
 
-(require 'modus-themes)
+(require 'doom-themes)
+(setq doom-themes-enable-bold t
+      doom-themes-enable-italic t)
 
-(setq modus-themes-italic-constructs t
-      modus-themes-bold-constructs nil
-      modus-themes-themes-region '(bg-only no-extend))
+(load-theme 'doom-one-light t)
 
-(modus-themes-load-themes)
-(modus-themes-load-operandi)
-
-(define-key global-map (kbd "<f5>") #'modus-themes-toggle)
-
+;;(doom-themes-visual-bell-config)
 
 (provide 'init-theme)
