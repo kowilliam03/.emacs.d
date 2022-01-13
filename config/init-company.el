@@ -2,6 +2,7 @@
 
 
 (setq tab-always-indent 'complete)
+;;(defvar default-completion-styles completion-styles)
 (add-to-list 'completion-styles 'initials t)
 
 (add-hook 'prog-mode-hook
@@ -14,16 +15,15 @@
 			    company-echo-delay nil
 			    company-minimum-prefix-length 1
 			    company-require-match nil
-			    company-dabbrev-ignore-case nil
-			    company-dabbrev-downcase nil
 			    company-dabberv-other-buffers 'all
 			    )
+	      ;;(setq company-backend '((company-capf company-dabbrev)))
 	      ;; Enable Company-mode
 	      (global-company-mode))
-
 	  )
 
 (with-eval-after-load 'company
+  ;; Keybinding
   (define-key company-mode-map (kbd "M-/") 'company-complete)
   (define-key company-mode-map [remap completion-at-point] 'company-complete)
   (define-key company-mode-map [remap indent-for-tab-command] 'company-indent-or-complete-common)

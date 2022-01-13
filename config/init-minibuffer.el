@@ -9,9 +9,12 @@
 
 (with-eval-after-load 'vertico
   (require 'orderless)
-  (setq completion-styles '(orderless)
-	completion-category-defaults nil
-	completion-category-overrides '((file (styles . (partial-completion)))))
+  (add-hook 'minibuffer-setup-hook
+	    #'(lambda ()
+		(setq-local completion-styles '(orderless)
+			    completion-category-defaults nil
+			    completion-category-overrides '((file (styles . (partial-completion)))))
+		(setq-local completion-styles '(substring orderless))))
 
   (require 'consult)
   (with-eval-after-load 'consult
