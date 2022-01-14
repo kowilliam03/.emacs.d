@@ -2,12 +2,36 @@
 
 (setq custom-safe-themes t)
 
-(require 'doom-themes)
+(add-hook 'after-init-hook
+	  #'(lambda ()
+	      (require 'doom-themes)
+	      (apply-theme)
+	      (require 'doom-modeline)
+	      (doom-modeline-mode 1))
+	  )
+
+
 (setq doom-themes-enable-bold t
       doom-themes-enable-italic t)
 
-(load-theme 'doom-one-light t)
+(setq-default current-theme 'doom-one-light)
 
-;;(doom-themes-visual-bell-config)
+(defun apply-theme ()
+  (load-theme current-theme)
+  (custom-set-variables `(current-theme (quote ,current-theme))))
+
+
+(defun light ()
+  (interactive)
+  (setq current-theme 'doom-one-light)
+  (apply-theme))
+
+
+(defun dark ()
+  (interactive)
+  (setq current-theme 'doom-acario-dark)
+  (apply-theme))
+
+
 
 (provide 'init-theme)

@@ -67,3 +67,9 @@
 [submodule "packages/doom-themes"]
 	path = packages/doom-themes
 	url = https://github.com/doomemacs/themes.git
+[submodule "packages/doom-modeline"]
+	path = packages/doom-modeline
+	url = https://github.com/seagle0128/doom-modeline.git
+[submodule "packages/shrink-path"]
+	path = packages/shrink-path
+	url = https://gitlab.com/bennya/shrink-path.el.git
