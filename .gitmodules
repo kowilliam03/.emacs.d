@@ -73,3 +73,6 @@
 [submodule "packages/shrink-path"]
 	path = packages/shrink-path
 	url = https://gitlab.com/bennya/shrink-path.el.git
+[submodule "packages/frame-local"]
+	path = packages/frame-local
+	url = https://github.com/sebastiencs/frame-local.git

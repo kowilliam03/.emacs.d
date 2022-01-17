@@ -1,5 +1,4 @@
-;; -*- lexical-binding: t; -*-
-
+;;; -*- lexical-binding: t; -*-
 
 (setq tab-always-indent 'complete)
 ;;(defvar default-completion-styles completion-styles)
@@ -32,7 +31,12 @@
   (define-key company-active-map (kbd "C-p") 'company-select-previous)
   (define-key company-active-map (kbd "C-d") 'company-show-doc-buffer)
   (define-key company-active-map (kbd "M-.") 'company-show-location)
-  (global-set-key (kbd "C-M-i") 'company-complete))
+  (global-set-key (kbd "C-M-i") 'company-complete)
+
+  ;; (when (display-graphic-p)
+  ;;   (require 'company-box)
+  ;;   (add-hook 'company-mode-hook 'company-box-mode))
+  )
 	  
 
 (provide 'init-company)
