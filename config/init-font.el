@@ -1,19 +1,19 @@
 ;; -*- lexical-binding: t; -*-
 
 (set-face-attribute 'default nil
-		    :font "IBM Plex Mono"
+		    :font "Fantasque Sans Mono"
 		    :weight 'regular
-		    :height 140)
+		    :height 150)
 
 (set-face-attribute 'fixed-pitch nil
-		    :font "IBM Plex Mono"
+		    :font "Fantasque Sans Mono"
 		    :weight 'light
-		    :height 140)
+		    :height 150)
 
 (set-face-attribute 'variable-pitch nil
 		    :font "Iosevka Aile"
 		    :weight 'light
-		    :height 140)
+		    :height 150)
 
 
 (provide 'init-font)
