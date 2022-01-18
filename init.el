@@ -8,8 +8,6 @@
                               (time-subtract after-init-time before-init-time)))
                      gcs-done)))
 
-(set-default-coding-systems 'utf-8)
-(setq gc-cons-threshold 50000000)
 
 ;; Load package & config path
 (defun load-path (dir)
@@ -17,31 +15,38 @@
     (add-to-list 'load-path dir)
     (normal-top-level-add-subdirs-to-load-path)))
 
-;; Load config
-(load-path "~/.emacs.d/config")
-;; Load packages
-(load-path "~/.emacs.d/packages/")
 
-(require 'init-utils)
-(require 'init-misc)
-(require 'init-package)
-(require 'init-buffer)
-(require 'init-minibuffer)
+(let (
+      (gc-cons-threshold most-positive-fixnum)
+      (gc-cons-percentage 0.6)
+      (file-name-handler-alist nil))
+  ;; Load config
+  (load-path "~/.emacs.d/config")
+  ;; Load packages
+  (load-path "~/.emacs.d/packages/")
+  (require 'init-utils)
+  (require 'init-misc)
+  (require 'init-package)
+  (require 'init-buffer)
+  (require 'init-minibuffer)
 
-;; UI
-(require 'init-font)
-(require 'init-icon)
-(require 'init-theme)
+  ;; UI
+  (require 'init-font)
+  (require 'init-icon)
+  (require 'init-theme)
+  
+  (require 'init-dired)
+  
+  ;; Develop tools
+  (require 'init-company)
+  (require 'init-git)
+  (require 'init-evil)
+  (require 'init-lsp)
 
-(require 'init-dired)
+  ;; Programming Language
+  (require 'init-python)
 
-;; Develop tools
-(require 'init-company)
-(require 'init-evil)
-(require 'init-lsp)
-
-;; Programming Language
-(require 'init-python)
-
+  (server-start)
+  )
 
 (provide 'init)

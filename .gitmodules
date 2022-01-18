@@ -22,9 +22,6 @@
 [submodule "packages/marginalia"]
 	path = packages/marginalia
 	url = https://github.com/minad/marginalia.git
-[submodule "packages/evil-collection"]
-	path = packages/evil-collection
-	url = https://github.com/emacs-evil/evil-collection.git
 [submodule "packages/all-the-icons"]
 	path = packages/all-the-icons
 	url = https://github.com/domtronn/all-the-icons.el.git
@@ -76,3 +73,12 @@
 [submodule "packages/frame-local"]
 	path = packages/frame-local
 	url = https://github.com/sebastiencs/frame-local.git
+[submodule "packages/magit"]
+	path = packages/magit
+	url = https://github.com/magit/magit.git
+[submodule "packages/with-editor"]
+	path = packages/with-editor
+	url = https://github.com/magit/with-editor.git
+[submodule "packages/transient"]
+	path = packages/transient
+	url = https://github.com/magit/transient.git
