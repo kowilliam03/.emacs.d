@@ -15,7 +15,9 @@
 		(setq-local completion-styles '(orderless)
 			    completion-category-defaults nil
 			    completion-category-overrides '((file (styles . (partial-completion)))))
-		(setq-local completion-styles '(substring orderless))))
+		(setq-local completion-styles '(substring orderless))
+		(set (make-local-variable 'face-remapping-alist)
+		     '((default :height 140)))))
 
   (require 'consult)
   (with-eval-after-load 'consult
