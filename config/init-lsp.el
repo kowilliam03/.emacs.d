@@ -1,10 +1,11 @@
 ;; -*- lexical-binding: t; -*-
 
 (with-eval-after-load 'lsp-mode
+  ;; Improve lsp-mode‘s performance
   (setq lsp-log-io nil
 	lsp-enable-folding  nil
 	lsp-diagnostic-package :none
-	lsp-enable-completion-at-point nil
+	lsp-enable-completion-at-point t
 	lsp-enable-symbol-highlighting nil
 	lsp-ui-doc-enable nil
 	lsp-signature-auto-activate nil
