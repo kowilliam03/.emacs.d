@@ -1,9 +1,10 @@
 ;; -*- lexical-binding: t; -*-
 
+(autoload 'vertico-mode "vertico" "" t)
+
 
 (add-hook 'after-init-hook
 	  #'(lambda ()
-	      (require 'vertico)
 	      (setq vertico-cycle t)
 	      (vertico-mode)
 	      ))

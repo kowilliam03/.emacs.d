@@ -1,5 +1,8 @@
 ;; -*- lexical-binding: t; -*-
 
+(autoload 'all-the-icons "all-the-icons" "" t)
+(autoload 'all-the-icons-dired-mode "all-the-icons-dired" "" t)
+
 (when (display-graphic-p)
   (require 'all-the-icons)
   (require 'all-the-icons-dired)

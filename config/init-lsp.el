@@ -1,5 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 
+(autoload 'lsp "lsp" "" t)
+
 (with-eval-after-load 'lsp-mode
   ;; Improve lsp-mode‘s performance
   (setq lsp-log-io nil
@@ -14,8 +16,6 @@
 
 
 (add-hook 'python-mode-hook #'(lambda ()
-				(require 'lsp-mode)
-				(require 'lsp-pyright)
 				(lsp)
 				))
 

@@ -1,12 +1,13 @@
 ;;; -*- lexical-binding: t; -*-
 
+(autoload 'global-company-mode "company" "" t)
+
 (setq tab-always-indent 'complete)
 ;;(defvar default-completion-styles completion-styles)
 (add-to-list 'completion-styles 'initials t)
 
 (add-hook 'prog-mode-hook
 	  #'(lambda ()
-	      (require 'company)
 	      ;; Config for company-mode
 	      (setq-default company-tooltip-align-annotations t
 			    company-tooltip-limit 12

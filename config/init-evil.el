@@ -1,9 +1,9 @@
 ;; -*- lexical-binding: t -*-
 
+(autoload 'evil-mode "evil" "" t)
 
 (add-hook 'after-init-hook
 	  #'(lambda ()
-	      (require 'evil)
 	      (setq evil-want-integration t
 		    evil-want-keybinding nil
 		    evil-want-C-u-scroll t
