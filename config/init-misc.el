@@ -14,5 +14,6 @@
 ;; disable ring bell
 (setq ring-bell-function 'ignore)
 
+(set-default-coding-systems 'utf-8)
 
 (provide 'init-misc)

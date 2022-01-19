@@ -8,4 +8,5 @@
 
 (define-key global-map (kbd "<f1>") #'kwn/open-config-folder)
 
+
 (provide 'init-utils)
