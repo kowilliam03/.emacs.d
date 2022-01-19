@@ -5,3 +5,5 @@ history
 eln-cache/
 .lsp-session-v1
 .cache/
+server/
+transient/
