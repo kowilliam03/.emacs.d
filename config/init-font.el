@@ -7,7 +7,7 @@
 
 (set-face-attribute 'fixed-pitch nil
 		    :font "Fantasque Sans Mono"
-		    :weight 'light
+		    :weight 'regular
 		    :height 150)
 
 (set-face-attribute 'variable-pitch nil
