@@ -1,5 +1,6 @@
 ;; -*- lexical-binding: t; -*-
 
+
 (add-hook 'after-init-hook
 	  #'(lambda ()
 	      (require 'vertico)
