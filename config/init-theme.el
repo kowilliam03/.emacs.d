@@ -35,6 +35,8 @@
 
 
 ;; modeline setting
-(setq doom-modeline-height 12)
+(with-eval-after-load 'doom-modeline
+  (setq doom-modeline-height 16)
+  )
 
 (provide 'init-theme)
