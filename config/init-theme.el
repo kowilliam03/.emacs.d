@@ -11,6 +11,7 @@
 	  )
 
 
+;; theme setting
 (setq doom-themes-enable-bold t
       doom-themes-enable-italic t)
 
@@ -33,5 +34,7 @@
   (apply-theme))
 
 
+;; modeline setting
+(setq doom-modeline-height 12)
 
 (provide 'init-theme)
