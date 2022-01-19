@@ -45,6 +45,7 @@
 
   ;; Programming Language
   (require 'init-python)
+  (require 'init-lisp)
 
   (server-start)
   )
