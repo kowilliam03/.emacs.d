@@ -16,4 +16,8 @@
 
 (set-default-coding-systems 'utf-8)
 
+;; If in prog-mode open line number
+(add-hook 'prog-mode-hook
+	  'linum-mode)
+
 (provide 'init-misc)
