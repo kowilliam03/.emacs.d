@@ -1,12 +1,16 @@
 ;; -*- lexical-binding: t; -*-
 
-(add-hook 'emacs-startup-hook
-          (lambda ()
-            (message "*** Emacs loaded in %s with %d garbage collections."
-                     (format "%.2f seconds"
-                             (float-time
-                              (time-subtract after-init-time before-init-time)))
-                     gcs-done)))
+;; (add-hook 'emacs-startup-hook
+;;           (lambda ()
+;;             (message "*** Emacs loaded in %s with %d garbage collections."
+;;                      (format "%.2f seconds"
+;;                              (float-time
+;;                               (time-subtract after-init-time before-init-time)))
+;;                      gcs-done)))
+
+;; Full screen
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+
 
 
 ;; Load package & config path
@@ -24,6 +28,7 @@
   (load-path "~/.emacs.d/config")
   ;; Load packages
   (load-path "~/.emacs.d/packages/")
+  (require 'init-dashboard)
   (require 'init-utils)
   (require 'init-misc)
   (require 'init-package)

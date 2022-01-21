@@ -15,7 +15,7 @@
 (setq doom-themes-enable-bold t
       doom-themes-enable-italic t)
 
-(setq-default current-theme 'doom-one-light)
+(setq-default current-theme 'doom-one)
 
 (defun apply-theme ()
   (load-theme current-theme)

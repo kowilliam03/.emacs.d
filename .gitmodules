@@ -85,3 +85,6 @@
 [submodule "packages/paredit"]
 	path = packages/paredit
 	url = https://github.com/emacsmirror/paredit.git
+[submodule "packages/emacs-dashboard"]
+	path = packages/emacs-dashboard
+	url = https://github.com/emacs-dashboard/emacs-dashboard.git
