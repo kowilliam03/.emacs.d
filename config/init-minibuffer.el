@@ -1,15 +1,14 @@
 ;; -*- lexical-binding: t; -*-
 
 (autoload 'vertico-mode "vertico" "" t)
+(autoload 'consult-imenu "consult-imenu" "" t)
 
 
-(add-hook 'after-init-hook
-	  #'(lambda ()
-	      (setq vertico-cycle t)
-	      (vertico-mode)
-	      ))
+(vertico-mode)
 
 (with-eval-after-load 'vertico
+  (setq vertico-cycle t)
+
   (require 'orderless)
   (add-hook 'minibuffer-setup-hook
 	    #'(lambda ()
@@ -21,20 +20,25 @@
 		     '((default :height 140)))))
 
   (require 'consult)
-  (with-eval-after-load 'consult
-    (global-set-key (kbd "C-<tab>") 'consult-buffer)
-    (global-set-key [remap switch-to-buffer] 'consult-buffer)
-    (global-set-key [remap switch-to-buffer-other-window] 'consult-buffer-other-window)
-    (global-set-key [remap switch-to-buffer-other-frame] 'consult-buffer-other-frame)
-    (global-set-key [remap goto-line] 'consult-goto-line)
-    (global-set-key (kbd "C-s") 'consult-line)
-    )
+  (global-set-key (kbd "C-<tab>") 'consult-buffer)
+  (global-set-key [remap switch-to-buffer] 'consult-buffer)
+  (global-set-key [remap switch-to-buffer-other-window] 'consult-buffer-other-window)
+  (global-set-key [remap switch-to-buffer-other-frame] 'consult-buffer-other-frame)
+  (global-set-key [remap goto-line] 'consult-goto-line)
+  (global-set-key (kbd "C-s") 'consult-line)
+  (global-set-key (kbd "C-c C-f") 'consult-imenu)
+
   (require 'marginalia)
   (marginalia-mode)
   
   (require 'savehist)	   
   (setq history-length 25)
   (savehist-mode 1)
+
+
+  (require 'embark)
+  (global-set-key (kbd "C-;") 'embark-act)
+
   )
 
 
