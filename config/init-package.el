@@ -1,4 +1,4 @@
-;; -*- lexical-binding: t; -*-
+;;; init-package.el -*- lexical-binding: t no-byte-compile: t -*-
 ;; Install package from Github
 
 (defun kwn/compile-package ()

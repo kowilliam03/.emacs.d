@@ -1,4 +1,4 @@
-;; -*- lexical-binding: t; -*-
+;;; init-dashboard.el -*- lexical-binding: t no-byte-compile: t -*-
 
 (add-hook 'after-init-hook
 	  #'(lambda ()

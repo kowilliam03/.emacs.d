@@ -1,4 +1,4 @@
-;; -*- lexical-binding: t; -*-
+;;; init-misc.el -*- lexical-binding: t no-byte-compile: t -*-
 
 ;; prevent backup files
 (setq make-backup-files nil)

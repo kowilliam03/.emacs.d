@@ -1,4 +1,4 @@
-;; -*- lexical-binding: t; -*-
+;;; init-font.el -*- lexical-binding: t no-byte-compile: t -*-
 
 (set-face-attribute 'default nil
 		    :font "Fantasque Sans Mono"
@@ -14,6 +14,5 @@
 		    :font "Iosevka Aile"
 		    :weight 'light
 		    :height 150)
-
 
 (provide 'init-font)

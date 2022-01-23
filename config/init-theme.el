@@ -1,4 +1,4 @@
-;; -*- lexical-binding: t; -*-
+;;; init-theme.el -*- lexical-binding: t no-byte-compile: t -*-
 
 (setq custom-safe-themes t)
 

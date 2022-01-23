@@ -1,4 +1,4 @@
-;; -*- lexical-binding: t; -*-
+;;; init-minibuffer.el -*- lexical-binding: t no-byte-compile: t -*-
 
 (autoload 'vertico-mode "vertico" "" t)
 (autoload 'consult-imenu "consult-imenu" "" t)
@@ -40,7 +40,5 @@
   (global-set-key (kbd "C-;") 'embark-act)
 
   )
-
-
 
 (provide 'init-minibuffer)

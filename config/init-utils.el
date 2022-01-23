@@ -1,4 +1,4 @@
-;; -*- lexical-binding: t; -*-
+;;; init-utils.el -*- lexical-binding: t no-byte-compile: t -*-
 ;; Some helper functions
 
 (defun kwn/open-config-folder ()
@@ -23,7 +23,7 @@
   (progn
     (goto-char (point-min))
     (insert (format ";;; %s.el -*- lexical-binding: t no-byte-compile: t -*-" file-name))
-    (insert "\n\n\n\n")
+    (insert "\n\n")
     (goto-char (point-max))
     (insert (format "(provide '%s)" file-name))
     (forward-line -2)

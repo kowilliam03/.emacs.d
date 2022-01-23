@@ -1,4 +1,4 @@
-;; -*- lexical-binding: t -*-
+;;; init-evil.el -*- lexical-binding: t no-byte-compile: t -*-
 
 (autoload 'evil-mode "evil" "" t)
 

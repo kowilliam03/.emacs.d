@@ -1,4 +1,4 @@
-;;; -*- lexical-binding: t; -*-
+;;; init-company.el -*- lexical-binding: t no-byte-compile: t -*-
 
 (autoload 'global-company-mode "company" "" t)
 

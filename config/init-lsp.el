@@ -1,4 +1,4 @@
-;; -*- lexical-binding: t; -*-
+;;; init-lsp.el -*- lexical-binding: t no-byte-compile: t -*-
 
 (autoload 'lsp "lsp" "" t)
 

@@ -1,4 +1,4 @@
-;; -*- lexical-binding: t; -*-
+;;; init-buffer.el -*- lexical-binding: t no-byte-compile: t -*-
 
 (autoload 'all-the-icons-ibuffer-mode "all-the-icons-ibuffer" "" t)
 
