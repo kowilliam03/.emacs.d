@@ -20,4 +20,8 @@
 (add-hook 'prog-mode-hook
 	  'linum-mode)
 
+;; Add msys2 in PATH
+(setenv "PATH" (concat "C:\\msys64\\usr\\bin;C:\\msys64\\mingw64\\bin")
+	(getenv "PATH"))
+
 (provide 'init-misc)
