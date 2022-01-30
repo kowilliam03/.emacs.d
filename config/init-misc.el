@@ -18,7 +18,7 @@
 
 ;; If in prog-mode open line number
 (add-hook 'prog-mode-hook
-	  'linum-mode)
+	  'display-line-numbers-mode)
 
 ;; Add msys2 in PATH
 (setenv "PATH" (concat "C:\\msys64\\usr\\bin;C:\\msys64\\mingw64\\bin")
