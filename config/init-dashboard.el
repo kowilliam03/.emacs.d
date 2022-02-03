@@ -5,7 +5,7 @@
 	      (require 'dashboard)
 
 	      (setq dashboard-banner-logo-title "Welcome to Emacs")
-	      (setq dashboard-startup-banner "../src/banner/2.txt")
+	      (setq dashboard-startup-banner 2)
 	      (setq dashboard-center-content t)
 
 	      (setq dashboard-set-heading-icons t
