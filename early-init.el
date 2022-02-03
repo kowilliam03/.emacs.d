@@ -11,7 +11,8 @@
 ;;(setq package-native-compile t)
 (setq comp-async-report-warnings-errors nil)
 
-(setq package-enable-at-startup nil)
+(setq package-enable-at-startup nil
+      package--init-file-ensured t)
 
 (setq initial-major-mode 'fundamental-mode)
 

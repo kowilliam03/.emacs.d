@@ -40,6 +40,7 @@
   (require 'init-git)
   (require 'init-evil)
   (require 'init-lsp)
+  (require 'init-yasnippet)
 
   ;; Programming Language
   (require 'init-python)
