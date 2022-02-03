@@ -1,4 +1,5 @@
-;;; init-misc.el -*- lexical-binding: t no-byte-compile: t -*-
+;		       company-dabbrev
+;; init-misc.el -*- lexical-binding: t no-byte-compile: t -*-
 
 ;; prevent backup files
 (setq make-backup-files nil)
@@ -21,7 +22,10 @@
 	  'display-line-numbers-mode)
 
 ;; Add msys2 in PATH
-(setenv "PATH" (concat "C:\\msys64\\usr\\bin;C:\\msys64\\mingw64\\bin")
-	(getenv "PATH"))
+(setenv "PATH"
+	(concat "C:\\msys64\\usr\\bin;C:\\msys64\\mingw64\\bin;"	  
+	(getenv "PATH")))
+
+(setq frame-inhibit-implied-resize t)
 
 (provide 'init-misc)
