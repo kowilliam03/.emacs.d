@@ -14,16 +14,21 @@
 			    company-idle-delay 0
 			    company-echo-delay nil
 			    company-minimum-prefix-length 1
+			    company-show-quick-access t
 			    company-require-match nil
 			    company-dabberv-other-buffers 'all
 			    )
-	      ;;(setq company-backend '((company-capf company-dabbrev)))
+	      (setq company-backends
+		    '((
+		       company-capf
+		       company-dabbrev
+		       )))
+
 	      ;; Enable Company-mode
 	      (global-company-mode))
 	  )
 
 (with-eval-after-load 'company
-  ;; Keybinding
   (define-key company-mode-map (kbd "M-/") 'company-complete)
   (define-key company-mode-map [remap completion-at-point] 'company-complete)
   (define-key company-mode-map [remap indent-for-tab-command] 'company-indent-or-complete-common)
@@ -34,9 +39,6 @@
   (define-key company-active-map (kbd "M-.") 'company-show-location)
   (global-set-key (kbd "C-M-i") 'company-complete)
 
-  ;; (when (display-graphic-p)
-  ;;   (require 'company-box)
-  ;;   (add-hook 'company-mode-hook 'company-box-mode))
   )
 	  
 
