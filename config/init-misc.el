@@ -17,9 +17,6 @@
 
 (set-default-coding-systems 'utf-8)
 
-;; If in prog-mode open line number
-(add-hook 'prog-mode-hook
-	  'display-line-numbers-mode)
 
 ;; Add msys2 in PATH
 (setenv "PATH"

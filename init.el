@@ -43,6 +43,7 @@
   (require 'init-yasnippet)
 
   ;; Programming Language
+  (require 'init-prog)
   (require 'init-python)
   (require 'init-lisp)
 
