@@ -27,6 +27,7 @@
   (require 'init-package)
   (require 'init-buffer)
   (require 'init-minibuffer)
+  (require 'init-keybinding)
 
   ;; UI
   (require 'init-font)

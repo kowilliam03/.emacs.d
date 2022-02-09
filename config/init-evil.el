@@ -12,7 +12,6 @@
 
 (with-eval-after-load 'evil
   ;; Evil config
-  (evil-mode 1)
   (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
   (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
 
