@@ -1,7 +1,7 @@
 ;;; init.el -*- lexical-binding: t no-byte-compile: t -*-
 
 ;; Full screen
-(add-to-list 'default-frame-alist '(fullscreen . maximized))
+;;(add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 
 
@@ -46,6 +46,6 @@
   (require 'init-prog)
   (require 'init-python)
   (require 'init-lisp)
-
+  
   (server-start)
   )
