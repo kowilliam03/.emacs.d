@@ -15,7 +15,7 @@
   ;; (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
   ;; (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
 
-  (Evil-global-set-key 'motion "j" 'evil-next-visual-line)
+  (evil-global-set-key 'motion "j" 'evil-next-visual-line)
   (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
 
 
@@ -27,6 +27,9 @@
   (define-key evil-emacs-state-map (kbd "<escape>") 'evil-normal-state)
 
   (setq evil-emacs-state-cursor '(bar . 2))
+
+  (require 'evil-collection)
+  (evil-collection-init)
   )
 
 (global-set-key (kbd "<escape>") 'keyborad-escape-quit)

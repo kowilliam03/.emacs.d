@@ -88,3 +88,9 @@
 [submodule "general.el"]
 	path = packages/general.el
 	url = https://github.com/noctuid/general.el.git
+[submodule "evil-collection"]
+	path = packages/evil-collection
+	url = https://github.com/emacs-evil/evil-collection
+[submodule "annalist.el"]
+	path = packages/annalist.el
+	url = https://github.com/noctuid/annalist.el.git
