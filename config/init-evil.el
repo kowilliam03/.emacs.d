@@ -12,10 +12,10 @@
 
 (with-eval-after-load 'evil
   ;; Evil config
-  (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
-  (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
+  ;; (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
+  ;; (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
 
-  (evil-global-set-key 'motion "j" 'evil-next-visual-line)
+  (Evil-global-set-key 'motion "j" 'evil-next-visual-line)
   (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
 
 
@@ -23,6 +23,10 @@
   (evil-set-initial-state 'dashboard-mode 'normal)
   (evil-set-initial-state 'dired-mode 'emacs)
 
+  (defalias 'evil-insert-state 'evil-emacs-state)
+  (define-key evil-emacs-state-map (kbd "<escape>") 'evil-normal-state)
+
+  (setq evil-emacs-state-cursor '(bar . 2))
   )
 
 (global-set-key (kbd "<escape>") 'keyborad-escape-quit)
