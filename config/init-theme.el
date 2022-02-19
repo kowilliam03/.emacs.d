@@ -2,41 +2,23 @@
 
 (require-package 'doom-themes)
 (require-package 'doom-modeline)
+(require-package 'modus-themes)
 
 (setq custom-safe-themes t)
 
 (add-hook 'after-init-hook
 	  #'(lambda ()
-	      (apply-theme)
+	      (setq modus-themes-italic-constructs t
+		    modus-themes-bold-constructs nil
+		    modus-themes-region '(bg-only no-extend))
+	      (modus-themes-load-themes)
+	      (modus-themes-load-operandi)
 	      (doom-modeline-mode 1))
 	  )
 
-;; theme setting
-(setq doom-themes-enable-bold t
-      doom-themes-enable-italic t)
-
-(setq-default current-theme 'doom-one)
-
-(defun apply-theme ()
-  (load-theme current-theme)
-  (custom-set-variables `(current-theme (quote ,current-theme))))
-
-
-(defun light ()
-  (interactive)
-  (setq current-theme 'doom-one-light)
-  (apply-theme))
-
-
-(defun dark ()
-  (interactive)
-  (setq current-theme 'doom-acario-dark)
-  (apply-theme))
-
-
 ;; modeline setting
 (with-eval-after-load 'doom-modeline
-  (setq doom-modeline-height 16)
+  (setq doom-modeline-height 12)
   )
 
 (provide 'init-theme)

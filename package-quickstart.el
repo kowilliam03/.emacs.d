@@ -914,6 +914,76 @@ a value in `ivy-re-builders-alist'.
 
 
 )
+(let ((load-file-name "/home/kwn/.emacs.d/elpa/modus-themes-20220218.1616/modus-themes-autoloads.el"))
+
+(add-to-list 'load-path (directory-file-name
+                         (or (file-name-directory "/home/kwn/.emacs.d/elpa/modus-themes-20220218.1616/modus-themes-autoloads.el") (car load-path))))
+
+
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "modus-operandi-theme" '("modus-operandi")))
+
+
+
+(autoload 'modus-themes-contrast "modus-themes" "\
+Measure WCAG contrast ratio between C1 and C2.
+C1 and C2 are color values written in hexadecimal RGB.
+
+\(fn C1 C2)" nil nil)
+
+(autoload 'modus-themes-color "modus-themes" "\
+Return color value for COLOR from current palette.
+COLOR is a key in `modus-themes-operandi-colors' or
+`modus-themes-vivendi-colors'.
+
+\(fn COLOR)" nil nil)
+
+(autoload 'modus-themes-color-alts "modus-themes" "\
+Return color value from current palette.
+When Modus Operandi is enabled, return color value for color
+LIGHT-COLOR.  When Modus Vivendi is enabled, return color value
+for DARK-COLOR.  LIGHT-COLOR and DARK-COLOR are keys in
+`modus-themes-operandi-colors' or `modus-themes-vivendi-colors'.
+
+\(fn LIGHT-COLOR DARK-COLOR)" nil nil)
+
+(autoload 'modus-themes-load-themes "modus-themes" "\
+Ensure that the Modus themes are in `custom-enabled-themes'.
+
+This function is intended for use in package declarations such as
+those defined with the help of `use-package'.  The idea is to add
+this function to the `:init' stage of the package's loading, so
+that subsequent calls that assume the presence of a loaded theme,
+like `modus-themes-toggle' or `modus-themes-load-operandi', will
+continue to work as intended even if they are lazy-loaded (such
+as when they are declared in the `:config' phase)." nil nil)
+
+(autoload 'modus-themes-load-operandi "modus-themes" "\
+Load `modus-operandi' and disable `modus-vivendi'.
+Also run `modus-themes-after-load-theme-hook'." t nil)
+
+(autoload 'modus-themes-load-vivendi "modus-themes" "\
+Load `modus-vivendi' and disable `modus-operandi'.
+Also run `modus-themes-after-load-theme-hook'." t nil)
+
+(autoload 'modus-themes-toggle "modus-themes" "\
+Toggle between `modus-operandi' and `modus-vivendi' themes.
+Also runs `modus-themes-after-load-theme-hook' at its last stage
+by virtue of calling either of `modus-themes-load-operandi' and
+`modus-themes-load-vivendi' functions." t nil)
+
+(when load-file-name (let ((dir (file-name-directory load-file-name))) (unless (equal dir (expand-file-name "themes/" data-directory)) (add-to-list 'custom-theme-load-path dir))))
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "modus-themes" '("modus-themes-")))
+
+
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "modus-vivendi-theme" '("modus-vivendi")))
+
+
+
+
+)
 (let ((load-file-name "/home/kwn/.emacs.d/elpa/markdown-mode-20220212.728/markdown-mode-autoloads.el"))
 
 (add-to-list 'load-path (directory-file-name
@@ -6296,14 +6366,14 @@ and toggle it if ARG is `toggle'; disable the mode otherwise.
 )
 (setq package-activated-list
       (append
-       '(yasnippet with-editor which-key vertico transient spinner s dash f shrink-path paredit orderless markdown-mode marginalia magit-section git-commit magit lv ht lsp-mode goto-chg general evil annalist evil-collection embark doom-themes all-the-icons doom-modeline dashboard consult company all-the-icons-ibuffer all-the-icons-dired)
+       '(yasnippet with-editor which-key vertico transient spinner s dash f shrink-path paredit orderless modus-themes markdown-mode marginalia magit-section git-commit magit lv ht lsp-mode goto-chg general evil annalist evil-collection embark doom-themes all-the-icons doom-modeline dashboard consult company all-the-icons-ibuffer all-the-icons-dired)
        package-activated-list))
 (progn
   (require 'info)
   (info-initialize)
   (setq Info-directory-list
 	(append
-	 '("/home/kwn/.emacs.d/elpa/company-20220110.2248" "/home/kwn/.emacs.d/elpa/embark-20220218.642" "/home/kwn/.emacs.d/elpa/annalist-20190929.207" "/home/kwn/.emacs.d/elpa/evil-20220217.748" "/home/kwn/.emacs.d/elpa/magit-20220217.349" "/home/kwn/.emacs.d/elpa/magit-section-20220216.1853" "/home/kwn/.emacs.d/elpa/orderless-20220212.356" "/home/kwn/.emacs.d/elpa/dash-20210826.1149" "/home/kwn/.emacs.d/elpa/transient-20220216.2303" "/home/kwn/.emacs.d/elpa/vertico-0.20" "/home/kwn/.emacs.d/elpa/with-editor-20220211.2034")
+	 '("/home/kwn/.emacs.d/elpa/company-20220110.2248" "/home/kwn/.emacs.d/elpa/embark-20220218.642" "/home/kwn/.emacs.d/elpa/annalist-20190929.207" "/home/kwn/.emacs.d/elpa/evil-20220217.748" "/home/kwn/.emacs.d/elpa/magit-20220217.349" "/home/kwn/.emacs.d/elpa/magit-section-20220216.1853" "/home/kwn/.emacs.d/elpa/modus-themes-20220218.1616" "/home/kwn/.emacs.d/elpa/orderless-20220212.356" "/home/kwn/.emacs.d/elpa/dash-20210826.1149" "/home/kwn/.emacs.d/elpa/transient-20220216.2303" "/home/kwn/.emacs.d/elpa/vertico-0.20" "/home/kwn/.emacs.d/elpa/with-editor-20220211.2034")
 	 Info-directory-list)))
 
 ;; Local Variables:
