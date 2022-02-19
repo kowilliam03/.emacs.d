@@ -2,19 +2,10 @@
 
 ;; Full screen
 ;;(add-to-list 'default-frame-alist '(fullscreen . maximized))
+(setq default-frame-alist '((width . 120) (height . 55) (menu-bar-lines . 1)))
 
 
-
-;; Load package & config path
-(defun load-path (dir)
-  (let ((default-directory (file-name-as-directory dir)))
-    (add-to-list 'load-path dir)
-    (normal-top-level-add-subdirs-to-load-path)))
-
-;; Load config
-(load-path "~/.emacs.d/config")
-;; Load packages
-;;(load-path "~/.emacs.d/packages/")
+(add-to-list 'load-path (expand-file-name "config" user-emacs-directory))
 
 
 (let (
