@@ -1,15 +1,15 @@
 ;;; init-theme.el -*- lexical-binding: t no-byte-compile: t -*-
 
+(require-package 'doom-themes)
+(require-package 'doom-modeline)
+
 (setq custom-safe-themes t)
 
 (add-hook 'after-init-hook
 	  #'(lambda ()
-	      (require 'doom-themes)
 	      (apply-theme)
-	      (require 'doom-modeline)
 	      (doom-modeline-mode 1))
 	  )
-
 
 ;; theme setting
 (setq doom-themes-enable-bold t

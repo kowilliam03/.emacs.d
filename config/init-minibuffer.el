@@ -2,6 +2,11 @@
 
 (autoload 'vertico-mode "vertico" "" t)
 (autoload 'consult-imenu "consult-imenu" "" t)
+(require-package 'vertico)
+(require-package 'consult)
+(require-package 'orderless)
+(require-package 'marginalia)
+(require-package 'embark)
 
 
 (vertico-mode)
@@ -9,7 +14,6 @@
 (with-eval-after-load 'vertico
   (setq vertico-cycle t)
 
-  (require 'orderless)
   (add-hook 'minibuffer-setup-hook
 	    #'(lambda ()
 		(setq-local completion-styles '(orderless)
@@ -19,7 +23,6 @@
 		(set (make-local-variable 'face-remapping-alist)
 		     '((default :height 140)))))
 
-  (require 'consult)
   (global-set-key (kbd "C-<tab>") 'consult-buffer)
   (global-set-key [remap switch-to-buffer] 'consult-buffer)
   (global-set-key [remap switch-to-buffer-other-window] 'consult-buffer-other-window)
@@ -28,15 +31,12 @@
   (global-set-key (kbd "C-s") 'consult-line)
   (global-set-key (kbd "C-c C-f") 'consult-imenu)
 
-  (require 'marginalia)
   (marginalia-mode)
   
-  (require 'savehist)	   
   (setq history-length 25)
   (savehist-mode 1)
 
 
-  (require 'embark)
   (global-set-key (kbd "C-;") 'embark-act)
 
   )

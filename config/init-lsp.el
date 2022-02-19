@@ -1,6 +1,6 @@
 ;;; init-lsp.el -*- lexical-binding: t no-byte-compile: t -*-
 
-(autoload 'lsp "lsp" "" t)
+(require-package 'lsp-mode)
 
 (with-eval-after-load 'lsp-mode
   ;; Improve lsp-mode‘s performance

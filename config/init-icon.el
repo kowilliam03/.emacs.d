@@ -1,7 +1,7 @@
 ;;; init-icon.el -*- lexical-binding: t no-byte-compile: t -*-
 
-(autoload 'all-the-icons "all-the-icons" "" t)
-(autoload 'all-the-icons-dired-mode "all-the-icons-dired" "" t)
+(require-package 'all-the-icons)
+(require-package 'all-the-icons-dired)
 
 (when (display-graphic-p)
   (require 'all-the-icons)

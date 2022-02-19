@@ -1,6 +1,7 @@
 ;;; init-evil.el -*- lexical-binding: t no-byte-compile: t -*-
 
-(autoload 'evil-mode "evil" "" t)
+(require-package 'evil)
+(require-package 'evil-collection)
 
 (add-hook 'after-init-hook
 	  #'(lambda ()
@@ -28,7 +29,6 @@
 
   (setq evil-emacs-state-cursor '(bar . 2))
 
-  (require 'evil-collection)
   (evil-collection-init)
   )
 

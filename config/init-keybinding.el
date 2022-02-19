@@ -1,16 +1,17 @@
 ;;; init-keybinding.el -*- lexical-binding: t no-byte-compile: t -*-
 
+(require-package 'general)
+(require-package 'which-key)
+
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
 (add-hook 'after-init-hook
 	  #'(lambda ()
-	      (require 'general)
 	      (general-auto-unbind-keys t)
 	      (general-evil-setup t)
 	      ))
 
 (with-eval-after-load 'general
-  (require 'which-key)
   (which-key-mode)
   (with-eval-after-load 'which-key
     (setq which-key-idle-delay 0.3)

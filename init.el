@@ -14,17 +14,17 @@
 ;; Load config
 (load-path "~/.emacs.d/config")
 ;; Load packages
-(load-path "~/.emacs.d/packages/")
+;;(load-path "~/.emacs.d/packages/")
 
 
 (let (
       (gc-cons-threshold most-positive-fixnum)
       (gc-cons-percentage 0.6)
       (file-name-handler-alist nil))
+  (require 'init-package)
   (require 'init-dashboard)
   (require 'init-utils)
   (require 'init-misc)
-  (require 'init-package)
   (require 'init-buffer)
   (require 'init-minibuffer)
   (require 'init-keybinding)

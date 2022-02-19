@@ -1,6 +1,6 @@
 ;;; init-buffer.el -*- lexical-binding: t no-byte-compile: t -*-
 
-(autoload 'all-the-icons-ibuffer-mode "all-the-icons-ibuffer" "" t)
+(require-package 'all-the-icons-ibuffer)
 
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
