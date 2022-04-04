@@ -1,9 +1,5 @@
 ;;; init-theme.el -*- lexical-binding: t no-byte-compile: t -*-
 
-(require-package 'doom-themes)
-(require-package 'doom-modeline)
-(require-package 'modus-themes)
-
 (setq custom-safe-themes t)
 
 (add-hook 'after-init-hook

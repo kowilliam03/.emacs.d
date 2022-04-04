@@ -1,8 +1,5 @@
 ;;; init-keybinding.el -*- lexical-binding: t no-byte-compile: t -*-
 
-(require-package 'general)
-(require-package 'which-key)
-
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
 (add-hook 'after-init-hook

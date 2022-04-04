@@ -2,12 +2,6 @@
 
 (autoload 'vertico-mode "vertico" "" t)
 (autoload 'consult-imenu "consult-imenu" "" t)
-(require-package 'vertico)
-(require-package 'consult)
-(require-package 'orderless)
-(require-package 'marginalia)
-(require-package 'embark)
-
 
 (vertico-mode)
 

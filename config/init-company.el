@@ -1,6 +1,5 @@
 ;;; init-company.el -*- lexical-binding: t no-byte-compile: t -*-
 
-(require-package 'company)
 
 (setq tab-always-indent 'complete)
 ;;(defvar default-completion-styles completion-styles)

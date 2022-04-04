@@ -1,6 +1,5 @@
 ;;; init-dashboard.el -*- lexical-binding: t no-byte-compile: t -*-
 
-(require-package 'dashboard)
 
 (add-hook 'after-init-hook
 	  #'(lambda ()

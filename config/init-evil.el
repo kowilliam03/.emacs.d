@@ -1,8 +1,5 @@
 ;;; init-evil.el -*- lexical-binding: t no-byte-compile: t -*-
 
-(require-package 'evil)
-(require-package 'evil-collection)
-
 (add-hook 'after-init-hook
 	  #'(lambda ()
 	      (setq evil-want-integration t

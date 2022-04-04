@@ -38,6 +38,9 @@
   (require 'init-prog)
   (require 'init-python)
   (require 'init-lisp)
+
+  ;; Other
+  (require 'init-gc)
   
   (server-start)
   )
