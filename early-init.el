@@ -1,6 +1,6 @@
 ;; -*- lexical-binding: t; -*-
 
-(setq gc-cons-threshold most-positive-fixnum)
+(setq package-enable-at-startup nil)
 
 (setq inhibit-startup-message t)
 
@@ -8,11 +8,10 @@
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 
-;;(setq package-native-compile t)
-(setq comp-async-report-warnings-errors nil)
+(setq native-comp-async-report-warnings-errors nil)
 
-(setq package-enable-at-startup nil)
-
-(setq initial-major-mode 'fundamental-mode)
+(set-charset-priority 'unicode)
+(prefer-coding-system 'utf-8)
+(setq system-time-locale "C")
 
 (provide 'early-init)

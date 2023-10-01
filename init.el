@@ -1,46 +1,34 @@
-;;; init.el -*- lexical-binding: t no-byte-compile: t -*-
+;; -*- lexical-binding: t; -*-
 
-;; Full screen
-;;(add-to-list 'default-frame-alist '(fullscreen . maximized))
-(setq default-frame-alist '((width . 120) (height . 55) (menu-bar-lines . 1)))
+(add-hook 'emacs-startup-hook
+	  (lambda ()
+	    (message "Emacs Loaded in %s."
+		     (emacs-init-time))))
 
 
-(add-to-list 'load-path (expand-file-name "config" user-emacs-directory))
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file)
 
+(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
 (let (
       (gc-cons-threshold most-positive-fixnum)
       (gc-cons-percentage 0.6)
+
       (file-name-handler-alist nil))
+
   (require 'init-package)
-  (require 'init-dashboard)
-  (require 'init-utils)
+  (require 'init-font)
   (require 'init-misc)
-  (require 'init-buffer)
-  (require 'init-minibuffer)
   (require 'init-keybinding)
 
-  ;; UI
-  (require 'init-font)
-  (require 'init-icon)
-  (require 'init-theme)
-  
-  (require 'init-dired)
-  
-  ;; Develop tools
-  (require 'init-company)
-  (require 'init-git)
+  (require 'init-minibuffer)
+  (require 'init-complete)
   (require 'init-evil)
-  (require 'init-lsp)
-  (require 'init-yasnippet)
-
-  ;; Programming Language
-  (require 'init-prog)
-  (require 'init-python)
-  (require 'init-lisp)
-
-  ;; Other
-  (require 'init-gc)
+  (require 'init-eglot)
+  (require 'init-treesit)
   
-  (server-start)
+  (require 'init-lisp)
   )
+
+(provide 'init)
