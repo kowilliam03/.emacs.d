@@ -1,0 +1,9 @@
+;; -*- lexical-binding: t; -*-
+
+(use-package gptel
+  :ensure t
+  :config
+  (setq gptel-ollama-host "localhost:11434")
+  )
+
+(provide 'init-llm)

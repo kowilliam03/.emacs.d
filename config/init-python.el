@@ -6,4 +6,10 @@
   (add-to-list 'eglot-server-programs
 			   '(python-mode . ("~/.local/bin/pyright-langserver" "--stdio"))))
 
+(use-package treesit
+  :ensure nil
+  :config
+  (add-to-list 'major-mode-remap-alist '(python-mode . python-ts-mode))
+  )
+
 (provide 'init-python)
