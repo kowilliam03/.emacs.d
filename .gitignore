@@ -1,0 +1,22 @@
+# ===================================================================
+# .gitignore for Emacs configuration (~/.emacs.d/)
+# ===================================================================
+
+elpa/
+el-get/
+
+
+eln-cache/
+tree-sitter/
+auto-save-list/
+backup/
+history
+tramp
+url/
+.eglot/
+org-roam.db
+.emacs.desktop
+.emacs.desktop.lock
+
+*~
+.#*

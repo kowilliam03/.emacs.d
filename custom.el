@@ -7,7 +7,7 @@
  '(package-selected-packages
    '(cape corfu dashboard doom-modeline evil-escape exec-path-from-shell
 		  gptel kind-icon marginalia modus-themes
-		  nerd-icons-completion ollama orderless vertico zenburn-theme)))
+		  nerd-icons-completion orderless vertico zenburn-theme)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
