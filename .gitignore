@@ -17,6 +17,6 @@ url/
 org-roam.db
 .emacs.desktop
 .emacs.desktop.lock
-
+recentf/
 *~
 .#*
