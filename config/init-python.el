@@ -1,0 +1,9 @@
+;; -*- lexical-binding: t; -*-
+
+(use-package eglot
+  :hook (python-mode . eglot-ensure)
+  :config
+  (add-to-list 'eglot-server-programs
+			   '(python-mode . ("~/.local/bin/pyright-langserver" "--stdio"))))
+
+(provide 'init-python)
