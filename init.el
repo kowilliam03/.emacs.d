@@ -12,9 +12,11 @@
 (require 'init-complete)
 (require 'init-theme)
 (require 'init-modeline)
- (require 'init-dashboard)
+(require 'init-dashboard)
 (require 'init-python)
 (require 'init-llm)
+(require 'init-project)
+(require 'init-fcitx)
 
 
 (add-hook 'emacs-startup-hook

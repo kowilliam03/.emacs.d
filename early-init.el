@@ -1,7 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 
 
-(setq gc-cons-threshold (* 100 1024 1024)) ; 100 MB
+(setq gc-cons-threshold most-positive-fixnum)
 
 
 (push '(tool-bar-lines . 0) default-frame-alist)
@@ -13,7 +13,10 @@
                          ("gnu" . "https://elpa.gnu.org/packages/")
                          ("nongnu" . "https://elpa.nongnu.org/nongnu/")))
 
-(setq package-enable-at-startup nil)
+(setq read-process-output-max (* 1024 1024))
+(setq package-quickstart t)
 
 
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+
+(provide 'early-init)
