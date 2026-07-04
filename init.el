@@ -2,7 +2,7 @@
 
 
 (require 'package)
-(package-initialize)
+;; (package-initialize)
 
 (add-to-list 'load-path (expand-file-name "config" user-emacs-directory))
 
