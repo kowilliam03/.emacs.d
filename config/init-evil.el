@@ -4,20 +4,17 @@
   :ensure t
   :init
   (setq evil-want-keybinding nil)
+  (setq evil-disable-insert-state-bindings t)
   :config
   (evil-mode 1)
 
-  (defalias 'evil-insert-state 'evil-emacs-state)
-  (define-key evil-emacs-state-map (kbd "<escape>") 'evil-normal-state)
-
-  (add-hook 'evil-emacs-state-entry-hook
+  (add-hook 'evil-insert-state-entry-hook
 	    (lambda ()
 	      (setq cursor-type 'bar)))
 
-  (add-hook 'evil-emacs-state-exit-hook
+  (add-hook 'evil-insert-state-exit-hook
 	    (lambda ()
 	      (setq cursor-type 'box)))
-  
   )
 
 (use-package evil-escape
