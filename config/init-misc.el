@@ -1,6 +1,6 @@
 ;; -*- lexical-binding: t; -*-
 
-(setq backup-diretory-alist '(("." . "~/.emacs.d/backup/")))
+(setq backup-directory-alist '(("." . "~/.emacs.d/backup/")))
 (setq auto-save-file-name-transforms '((".*" "~/.emacs.d/auto-save-list/" t)))
 (setq create-lockfiles nil)
 
