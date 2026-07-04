@@ -24,4 +24,10 @@
   (setq evil-escape-key-sequence "jk")
   )
 
+(use-package evil-collection
+  :ensure t
+  :after evil
+  :config
+  (evil-collection-init))
+
 (provide 'init-evil)
