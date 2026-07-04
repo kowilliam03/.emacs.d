@@ -18,6 +18,7 @@
 (require 'init-python)
 (require 'init-llm)
 (require 'init-project)
+(require 'init-claude-code)
 
 
 (add-hook 'emacs-startup-hook
