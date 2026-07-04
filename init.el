@@ -4,6 +4,8 @@
 (require 'package)
 ;; (package-initialize)
 
+(load custom-file 'noerror)
+
 (add-to-list 'load-path (expand-file-name "config" user-emacs-directory))
 
 (require 'init-misc)
