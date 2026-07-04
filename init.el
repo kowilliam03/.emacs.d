@@ -21,4 +21,4 @@
 
 
 (add-hook 'emacs-startup-hook
-	  (lambda () (setq gc-cons-threshold (* 800 1024))))
+	  (lambda () (setq gc-cons-threshold (* 32 1024 1024))))
