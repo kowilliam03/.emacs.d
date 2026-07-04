@@ -6,7 +6,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    '(cape corfu dashboard doom-modeline evil-escape exec-path-from-shell
-		  fcitx gptel kind-icon marginalia modus-themes
+		  gptel kind-icon marginalia modus-themes
 		  nerd-icons-completion orderless treemacs vertico
 		  zenburn-theme)))
 (custom-set-faces
