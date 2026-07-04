@@ -18,11 +18,15 @@
 	     (setq display-line-numbers 'relative)
 	     (display-line-numbers-mode 1)))
 
-(set-face-attribute 'default nil :font "JetBrains Mono-16")
+(set-face-attribute 'default nil
+					:font "Sarasa Mono TC" :height 160)
+
 
 (setq-default tab-width 4)
 
 (show-paren-mode 1)
 (setq show-paren-delay 0.1)
+
+(electric-pair-mode 1)
 
 (provide 'init-misc)

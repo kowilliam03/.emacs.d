@@ -15,8 +15,9 @@
 
 (use-package orderless
   :ensure t
-  :init
-  (setq completion-styles '(orderless flex))
+  :custom
+  (completion-styles '(orderless basic))
+  (completion-category-overrides '((file (styles basic partial-completion))))
   )
 
 (use-package corfu
