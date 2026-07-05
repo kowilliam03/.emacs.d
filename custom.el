@@ -6,9 +6,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(cape corfu dashboard doom-modeline evil-collection evil-escape
-		  exec-path-from-shell ghostel gptel marginalia modus-themes
-		  nerd-icons-completion orderless treemacs vertico))
+   '(cape corfu dape dashboard doom-modeline evil-collection evil-escape
+		  exec-path-from-shell flymake-ruff ghostel gptel marginalia
+		  modus-themes nerd-icons-completion orderless pet treemacs vertico))
  '(package-vc-selected-packages
    '((claude-code-ide :url
 					  "https://github.com/manzaltu/claude-code-ide.el"))))
