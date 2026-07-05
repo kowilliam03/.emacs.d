@@ -1,7 +1,8 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package ghostel
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package claude-code-ide
   :vc (:url "https://github.com/manzaltu/claude-code-ide.el" :rev :newest)

@@ -29,4 +29,21 @@
 
 (electric-pair-mode 1)
 
+;; protect against catastrophic slowdown when a minified/very-long-line file
+;; gets opened by accident
+(global-so-long-mode 1)
+
+;; large glyph sets (the nerd-icons-* packages draw a lot of icon glyphs)
+;; can otherwise trigger expensive font-cache compaction during redisplay
+(setq inhibit-compacting-font-caches t)
+
+;; only git is actually used (treemacs-git-mode); skip vc's default
+;; per-backend probing for Bzr/Hg/SVN/etc. on every file visit
+(setq vc-handled-backends '(Git))
+
+(use-package gcmh
+  :ensure t
+  :init
+  (gcmh-mode 1))
+
 (provide 'init-misc)

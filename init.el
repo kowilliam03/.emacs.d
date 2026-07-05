@@ -15,11 +15,10 @@
 (require 'init-theme)
 (require 'init-modeline)
 (require 'init-dashboard)
+(require 'init-git)
+(require 'init-search)
 (require 'init-python)
 (require 'init-llm)
 (require 'init-project)
 (require 'init-claude-code)
-
-
-(add-hook 'emacs-startup-hook
-	  (lambda () (setq gc-cons-threshold (* 32 1024 1024))))
+(require 'init-keys)

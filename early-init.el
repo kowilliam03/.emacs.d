@@ -3,6 +3,8 @@
 
 (setq gc-cons-threshold most-positive-fixnum)
 
+(setq native-comp-async-report-warnings-errors 'silent)
+
 
 (push '(tool-bar-lines . 0) default-frame-alist)
 (push '(menu-bar-lines . 0) default-frame-alist)

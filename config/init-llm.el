@@ -2,6 +2,7 @@
 
 (use-package gptel
   :ensure t
+  :commands (gptel gptel-menu gptel-send)
   :config
   (gptel-make-ollama "Ollama"
 	:host "localhost:11434"
