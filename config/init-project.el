@@ -27,8 +27,6 @@
   (treemacs-git-mode 'simple)
 
   (defun +treemacs-auto-show ()
-	"第一次在這個 frame 造訪 project 內的檔案時自動顯示 Treemacs（VSCode 風格）。
-使用者手動關閉後 (visibility 變成 `exists') 就不會再自動彈出，避免一直打擾。"
 	(when (and (project-current)
 			   (eq (treemacs-current-visibility) 'none))
 	  (treemacs-add-and-display-current-project-exclusively)))

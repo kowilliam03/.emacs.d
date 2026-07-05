@@ -7,14 +7,15 @@
   (setq evil-disable-insert-state-bindings t)
   :config
   (evil-mode 1)
+  (evil-set-initial-state 'ghostel-mode 'emacs)
 
   (add-hook 'evil-insert-state-entry-hook
-	    (lambda ()
-	      (setq cursor-type 'bar)))
+			(lambda ()
+			  (setq cursor-type 'bar)))
 
   (add-hook 'evil-insert-state-exit-hook
-	    (lambda ()
-	      (setq cursor-type 'box)))
+			(lambda ()
+			  (setq cursor-type 'box)))
   )
 
 (use-package evil-escape

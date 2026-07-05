@@ -14,12 +14,12 @@
 (global-display-line-numbers-mode 1)
 
 (add-hook 'prog-mode-hook
-	  (lambda ()
-	     (setq display-line-numbers 'relative)
-	     (display-line-numbers-mode 1)))
+		  (lambda ()
+			(setq display-line-numbers 'relative)
+			(display-line-numbers-mode 1)))
 
 (set-face-attribute 'default nil
-					:font "Sarasa Mono TC" :height 160)
+					:font "Sarasa Mono TC" :height 200)
 
 
 (setq-default tab-width 4)

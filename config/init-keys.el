@@ -5,6 +5,11 @@
   :init
   (which-key-mode 1))
 
+(use-package ace-window
+  :ensure t
+  :config
+  (setq aw-keys '(?a ?s ?d ?f ?j ?k ?l)))
+
 (use-package general
   :ensure t
   :config
@@ -14,7 +19,7 @@
 	:states '(normal visual motion)
 	:keymaps 'override
 	:prefix "SPC"
-	:global-prefix "C-SPC")
+	:global-prefix "C-z")
 
   (+leader-def
 	"SPC" '(execute-extended-command :which-key "M-x")
@@ -79,7 +84,11 @@
 	"t w" '(toggle-truncate-lines :which-key "truncate lines")
 
 	"w"   '(:ignore t :which-key "window")
-	"w w" '(other-window :which-key "other window")
+	"w w" '(ace-window :which-key "ace window")
+	"w h" '(windmove-left :which-key "left")
+	"w j" '(windmove-down :which-key "down")
+	"w k" '(windmove-up :which-key "up")
+	"w l" '(windmove-right :which-key "right")
 	"w d" '(delete-window :which-key "delete window")
 	"w s" '(split-window-below :which-key "split below")
 	"w v" '(split-window-right :which-key "split right")

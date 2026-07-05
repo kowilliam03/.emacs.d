@@ -8,8 +8,10 @@
 (use-package eglot
   :hook (python-base-mode . eglot-ensure)
   :config
+  ;; eglot-booster execs this path itself (not via Emacs's make-process), so
+  ;; it must already be an absolute path -- it does not expand `~'.
   (add-to-list 'eglot-server-programs
-			   '(python-base-mode . ("~/.local/bin/pyright-langserver" "--stdio")))
+			   `(python-base-mode . (,(expand-file-name "~/.local/bin/pyright-langserver") "--stdio")))
   ;; Eglot logs every JSON-RPC message to *EGLOT events* by default; that
   ;; buffer grows unbounded under pyright's constant traffic. Disable it.
   (setq eglot-events-buffer-size 0))

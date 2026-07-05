@@ -3,7 +3,7 @@
 (use-package modus-themes
   :ensure t
   :config
-  (load-theme 'modus-operandi-tinted t)
+  (load-theme 'modus-vivendi-tinted t)
   )
 
 (provide 'init-theme)
