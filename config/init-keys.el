@@ -67,6 +67,7 @@
 	"c i" '(eglot-find-implementation :which-key "find implementation")
 	"c e" '(consult-flymake :which-key "list errors")
 	"c R" '(eglot-reconnect :which-key "reconnect eglot")
+	"c h" '(eldoc-box-help-at-point :which-key "eldoc box")
 
 	"d"   '(:ignore t :which-key "debug")
 	"d d" '(dape :which-key "start/select")
