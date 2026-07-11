@@ -30,7 +30,15 @@
 (use-package eldoc-box
   :ensure t
   :after eglot
-  :hook (eglot-managed-mode . eldoc-box-hover-mode))
+  :hook (eglot-managed-mode . eldoc-box-hover-mode)
+  :config
+  (defun kwn/eldoc-box-bottom-right-position-function (width height)
+    "Anchor the eldoc-box childframe to the bottom-right of the frame."
+    (pcase-let ((`(,_ ,offset-r ,offset-b) eldoc-box-offset))
+      (cons (- (frame-outer-width (selected-frame)) width offset-r)
+            (- (frame-outer-height (selected-frame)) height offset-b))))
+  (setq eldoc-box-position-function #'kwn/eldoc-box-bottom-right-position-function)
+  (set-face-attribute 'eldoc-box-body nil :family "Sarasa UI TC" :height 160))
 
 (use-package flymake-ruff
   :ensure t
