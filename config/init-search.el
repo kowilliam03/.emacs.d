@@ -2,6 +2,7 @@
 
 (use-package consult
   :ensure t
+  :defer t
   :init
   (setq xref-show-xrefs-function #'consult-xref)
   (setq xref-show-definitions-function #'consult-xref))

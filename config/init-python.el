@@ -2,7 +2,8 @@
 
 (use-package pet
   :ensure t
-  :config
+  :defer t
+  :init
   (add-hook 'python-base-mode-hook 'pet-mode -10))
 
 (use-package eglot
@@ -50,6 +51,8 @@
 
 (use-package dape
   :ensure t
+  :commands (dape dape-breakpoint-toggle dape-continue dape-next
+                   dape-step-in dape-step-out dape-repl dape-quit)
   :config
   ;; debug sessions should default to the project root, not the buffer's
   ;; own directory (dape ships a 'debugpy template for Python out of the box)
