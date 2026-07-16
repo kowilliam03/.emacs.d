@@ -9,11 +9,13 @@
 (use-package eglot
   :hook (python-base-mode . eglot-ensure)
   :config
-  ;; :language-id is required: eglot would otherwise derive "python-base"
-  ;; from the mode name, and ty silently skips documents whose languageId
-  ;; isn't "python" (didOpen accepted, but zero diagnostics).
+  ;; :language-id override: eglot would otherwise derive "python-base" from
+  ;; the mode name. This was required for ty (which silently skipped
+  ;; documents whose languageId wasn't "python" -- didOpen accepted, but
+  ;; zero diagnostics); kept here defensively for pyrefly since its handling
+  ;; of a non-standard languageId isn't documented either way.
   (add-to-list 'eglot-server-programs
-			   '((python-base-mode :language-id "python") . ("ty" "server")))
+			   '((python-base-mode :language-id "python") . ("pyrefly" "lsp")))
   ;; Eglot logs every JSON-RPC message to *EGLOT events* by default; that
   ;; buffer grows unbounded under the server's constant traffic. Disable it.
   (setq eglot-events-buffer-size 0))
@@ -71,7 +73,7 @@
   :init
   (apheleia-global-mode 1)
   :config
-  ;; ty provides no formatting capability, so eglot-format is a no-op
+  ;; pyrefly provides no formatting capability, so eglot-format is a no-op
   ;; for Python; use ruff (format + import sort) via apheleia instead
   (setf (alist-get 'python-ts-mode apheleia-mode-alist) 'ruff-isort)
   (setf (alist-get 'python-mode apheleia-mode-alist) 'ruff-isort))
