@@ -24,8 +24,6 @@
   :vc (:url "https://github.com/jdtsmith/eglot-booster" :rev :newest)
   :after eglot
   :config
-  ;; emacs-lsp-booster is a separate external binary (e.g. `paru -S emacs-lsp-booster`);
-  ;; skip activation until it's installed instead of erroring on every startup.
   (when (executable-find "emacs-lsp-booster")
     (eglot-booster-mode)))
 
@@ -34,13 +32,9 @@
   :after eglot
   :hook (eglot-managed-mode . eldoc-box-hover-mode)
   :config
-  (defun kwn/eldoc-box-bottom-right-position-function (width height)
-    "Anchor the eldoc-box childframe to the bottom-right of the frame."
-    (pcase-let ((`(,_ ,offset-r ,offset-b) eldoc-box-offset))
-      (cons (- (frame-outer-width (selected-frame)) width offset-r)
-            (- (frame-outer-height (selected-frame)) height offset-b))))
-  (setq eldoc-box-position-function #'kwn/eldoc-box-bottom-right-position-function)
-  (set-face-attribute 'eldoc-box-body nil :family "Sarasa UI TC" :height 160))
+  (set-face-attribute 'eldoc-box-border nil)
+  (set-face-attribute 'eldoc-box-body nil)
+  )
 
 (use-package flymake-ruff
   :ensure t
@@ -62,7 +56,7 @@
 (use-package dape
   :ensure t
   :commands (dape dape-breakpoint-toggle dape-continue dape-next
-                   dape-step-in dape-step-out dape-repl dape-quit)
+                  dape-step-in dape-step-out dape-repl dape-quit)
   :config
   ;; debug sessions should default to the project root, not the buffer's
   ;; own directory (dape ships a 'debugpy template for Python out of the box)
